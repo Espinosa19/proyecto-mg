@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil</title>
+    <!-- FontAwesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Enlace a tus estilos externos -->
+    <link rel="stylesheet" href="css/mi_perfil.css">
+</head>
+<body>
+
+    <!-- Contenedor central de la pantalla -->
+    <div class="perfil-main-wrapper">
+        
+        <!-- Tarjeta del Perfil -->
+        <div class="perfil-container">
+            <!-- Contenedor horizontal -->
+            <div class="perfil-header-horizontal">
+                <!-- Foto de perfil circular -->
+                <div class="avatar-perfil-wrapper">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Foto de Perfil" class="avatar-perfil-img">
+                    <button class="btn-cambiar-foto"><i class="fas fa-camera"></i></button>
+                </div>
+                
+                <!-- Datos del usuario -->
+                <div class="perfil-info-basica">
+                    <h2 class="perfil-nombre"> Usuario</h2>
+                    <p class="perfil-estado">
+                        <span class="status-indicator"></span> Mienmbro activo
+                    </p>
+                </div>
+            </div>
+        </div> <!-- Fin de la Tarjeta del Perfil -->
+
+        <!-- Título para la sección de datos físicos -->
+        <h3 class="perfil-seccion-titulo">Datos físicos</h3>
+
+        <!-- NUEVO CONTENEDOR: Estatura y Peso -->
+        <div class="perfil-container-secundario">
+            <div class="perfil-grid-datos">
+                <div class="form-group">
+                    <label for="estatura">Estatura (cm)</label>
+                    <input type="number" id="estatura" placeholder="Ej. 175" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="peso">Peso (kg)</label>
+                    <input type="number" id="peso" placeholder="Ej. 70" min="0">
+                </div>
+            </div>
+        </div>
+
+        <!-- NUEVO TÍTULO: Detalles -->
+        <h3 class="perfil-seccion-titulo">Detalles</h3>
+
+        <!-- NUEVO CONTENEDOR: Opciones avanzadas y Notificaciones -->
+        <div class="perfil-container-secundario">
+            
+            <!-- Objetivo Fit con Menú Desplegable -->
+            <div class="form-group">
+                <label for="objetivo-fit">Objetivo fit</label>
+                <select id="objetivo-fit">
+                    <option value="" disabled selected>Selecciona tu objetivo</option>
+                    <option value="perder-peso">Perder peso</option>
+                    <option value="mantener-peso">Mantener peso</option>
+                    <option value="ganar-musculo">Ganar masa muscular</option>
+                </select>
+            </div>
+
+            <!-- Preferencias Alimentarias con Menú Desplegable -->
+            <div class="form-group">
+                <label for="preferencias-alimentarias">Preferencias alimentarias</label>
+                <select id="preferencias-alimentarias">
+                    <option value="" disabled selected>Selecciona tu dieta</option>
+                    <option value="omnivora">Omnívora (De todo)</option>
+                    <option value="vegetariana">Vegetariana</option>
+                    <option value="vegana">Vegana</option>
+                </select>
+            </div>
+
+            <!-- Recordatorios y Notificaciones con Botón Deslizable -->
+            <div class="form-row-switch">
+                <div class="switch-texto">
+                    <span class="switch-titulo">Recordatorios y notificaciones</span>
+                </div>
+                <label class="switch-control">
+                    <input type="checkbox" id="notificaciones-toggle" checked>
+                    <span class="slider-round"></span>
+                </label>
+            </div>
+
+        </div> <!-- Fin de las Opciones avanzadas -->
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+/* CSS Actualizado para entrenamientos.html */
+
+/* Se eliminó el reseteo de body y html para evitar conflictos con el diseño principal de la SPA */
+
+/* Estilo del contenedor */
+.contenedor-central {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+    
+    /* Centrado automático dentro de su propia sección */
+    margin: 20px auto;
+}

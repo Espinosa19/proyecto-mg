@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contenedores con Navegación</title>
+  <link rel="stylesheet" href="css/blogs_script_2.css">
+</head>
+<body>
+
+  <!-- Barra de navegación superior -->
+  <header class="top-nav">
+    <!-- Regresa al apartado de blogs en index -->
+    <a href="index.html#blogs" class="btn-cerrar-regresar">
+      ✕ Regresar
+    </a>
+    
+    <!-- Botón hacia blogs_2.html -->
+    <a href="blogs_2.html" class="btn-nav btn-more">Más blogs</a>
+  </header>
+
+  <!-- Sección principal con los 4 contenedores -->
+  <section class="fila-contenedores">
+    <!-- Contenedor 1 -->
+    <div class="card">
+      <h3>Contenedor 1</h3>
+      <p>Contenido breve.</p>
+      <button class="btn-ver" onclick="abrirModal('Información del Contenedor 1', 'Aquí va todo el detalle o contenido completo del Contenedor 1.')">Ver</button>
+    </div>
+
+    <!-- Contenedor 2 -->
+    <div class="card">
+      <h3>Contenedor 2</h3>
+      <p>Contenido breve.</p>
+      <button class="btn-ver" onclick="abrirModal('Información del Contenedor 2', 'Aquí va todo el detalle o contenido completo del Contenedor 2.')">Ver</button>
+    </div>
+
+    <!-- Contenedor 3 -->
+    <div class="card">
+      <h3>Contenedor 3</h3>
+      <p>Contenido breve.</p>
+      <button class="btn-ver" onclick="abrirModal('Información del Contenedor 3', 'Aquí va todo el detalle o contenido completo del Contenedor 3.')">Ver</button>
+    </div>
+
+    <!-- Contenedor 4 -->
+    <div class="card">
+      <h3>Contenedor 4</h3>
+      <p>Contenido breve.</p>
+      <button class="btn-ver" onclick="abrirModal('Información del Contenedor 4', 'Aquí va todo el detalle o contenido completo del Contenedor 4.')">Ver</button>
+    </div>
+  </section>
+
+  <!-- MODAL / VENTANA EMERGENTE -->
+  <div id="modal-info" class="modal-overlay" onclick="cerrarModalAfuera(event)">
+    <div class="modal-content">
+      <!-- Tache flotante para cerrar -->
+      <button class="btn-cerrar-modal" onclick="cerrarModal()">✕</button>
+      
+      <h2 id="modal-titulo">Título del Blog</h2>
+      <p id="modal-texto">Contenido detallado...</p>
+    </div>
+  </div>
+
+  <!-- CÓDIGO JS DIRECTO -->
+  <script>
+    function abrirModal(titulo, texto) {
+      const modal = document.getElementById('modal-info');
+      document.getElementById('modal-titulo').innerText = titulo;
+      document.getElementById('modal-texto').innerText = texto;
+      modal.classList.add('active');
+    }
+
+    function cerrarModal() {
+      const modal = document.getElementById('modal-info');
+      modal.classList.remove('active');
+    }
+
+    function cerrarModalAfuera(event) {
+      if (event.target.classList.contains('modal-overlay')) {
+        cerrarModal();
+      }
+    }
+  </script>
+
+</body>
+</html>

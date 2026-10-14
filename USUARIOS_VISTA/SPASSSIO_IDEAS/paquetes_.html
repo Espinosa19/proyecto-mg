@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paquetes - SPASSSIO</title>
+    <link rel="stylesheet" href="CSS/paquetes_.css">
+</head>
+<body>
+
+    <!-- Barra de navegación superior con Logo, Título y Botón Regresar -->
+    <nav class="navbar-superior">
+        <div class="nav-container">
+            <!-- Logo con cuadro blanco -->
+            <a href="Index.html" class="nav-logo-link">
+                <!-- Reemplaza 'img/logo.png' con la ruta de tu imagen -->
+                <img src="img/logo.png" alt="Logo SPASSSIO" class="nav-logo">
+            </a>
+
+            <!-- Título central -->
+            <span class="nav-titulo">Paquetes</span>
+
+            <!-- Botón de Regresar a la derecha -->
+            <a href="Index.html" class="btn-regresar" title="Regresar al inicio">
+                <span class="flecha-regresar">←</span> Regresar
+            </a>
+        </div>
+    </nav>
+
+    <!-- Contenedor Principal de Secciones -->
+    <main class="paquetes-section">
+        
+        <!-- SECCIÓN 1: BÁSICO -->
+        <section class="paquete-bloque">
+            <h2 class="categoria-titulo">Básico</h2>
+
+            <div class="paquete-card">
+                <div class="tabla-paquetes">
+                    
+                    <!-- Columna Beneficios Básico -->
+                    <div class="columna-beneficios">
+                        <div class="beneficios-titulo">Beneficios</div>
+                        <ul class="lista-beneficios">
+                            <li><span class="check-icon">✓</span> Encuesta inicial de salud (opcional)</li>
+                            <li><span class="check-icon">✓</span> Acceso a pláticas/conferencias sobre temas de salud y testimoniales</li>
+                            <li><span class="check-icon">✓</span> Programa personalizado de ejercicio cardiovascular</li>
+                            <li><span class="check-icon">✓</span> Cambio de rutina mensual</li>
+                            <li><span class="check-icon">✓</span> Orientación nutricional</li>
+                        </ul>
+                    </div>
+
+                    <!-- Plan Trimestral -->
+                    <div class="columna-plan">
+                        <div class="plan-contenido">
+                            <div class="plan-titulo">Trimestral</div>
+                            <div class="costo-total">Con un costo de $537.00</div>
+                            <div class="costo-mensual">Por $179.00 al mes</div>
+                        </div>
+                        <button class="btn-adquirir" onclick="seleccionarPlan('Basico', 'Trimestral', 537)">Adquirir</button>
+                    </div>
+
+                    <!-- Plan Semestral -->
+                    <div class="columna-plan">
+                        <div class="plan-contenido">
+                            <div class="plan-titulo">Semestral</div>
+                            <div class="costo-total">Con un costo de $750.00</div>
+                            <div class="costo-mensual">Por $125.00 al mes</div>
+                        </div>
+                        <button class="btn-adquirir" onclick="seleccionarPlan('Basico', 'Semestral', 750)">Adquirir</button>
+                    </div>
+
+                    <!-- Plan Anual (Destacado) -->
+                    <div class="columna-plan destacado">
+                        <span class="badge-recomendado">Recomendado</span>
+                        <div class="plan-contenido">
+                            <div class="plan-titulo">Anual</div>
+                            <div class="costo-total">Con un costo de $1,188.00</div>
+                            <div class="costo-mensual">Por tan solo $99.00 al mes</div>
+                        </div>
+                        <button class="btn-adquirir" onclick="seleccionarPlan('Basico', 'Anual', 1188)">Adquirir</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: PLAN PREMIUM -->
+        <section class="paquete-bloque">
+            <h2 class="categoria-titulo">Plan Premium</h2>
+
+            <div class="paquete-card">
+                <div class="tabla-paquetes">
+                    
+                    <!-- Columna Beneficios Premium con Scroll -->
+                    <div class="columna-beneficios">
+                        <div class="beneficios-titulo">Beneficios</div>
+                        <div class="beneficios-scroll-container">
+                            <ul class="lista-beneficios">
+                                <li><span class="check-icon">✓</span> Encuesta inicial de salud (opcional)</li>
+                                <li><span class="check-icon">✓</span> Acceso a pláticas/conferencias sobre temas de salud y testimoniales</li>
+                                <li><span class="check-icon">✓</span> Programa personalizado de ejercicio cardiovascular</li>
+                                <li><span class="check-icon">✓</span> Cambio de rutina mensual</li>
+                                <li><span class="check-icon">✓</span> Orientación nutricional</li>
+                                <li><span class="check-icon">✓</span> Programa de tono muscular o especial (para acelerar resultados)</li>
+                                <li><span class="check-icon">✓</span> Requerimiento calórico personalizado (para apoyarte en tus metas)</li>
+                                <li><span class="check-icon">✓</span> Acceso a clases grupales calendarizadas (para mantenerte motivado)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Plan Trimestral Premium -->
+                    <div class="columna-plan">
+                        <div class="plan-contenido">
+                            <div class="plan-titulo">Trimestral</div>
+                            <div class="costo-total">Trimestral $816.00</div>
+                            <div class="equivalente-texto">Equivalente a</div>
+                            <div class="costo-mensual">$272.00 <span class="texto-chico">al mes</span></div>
+                        </div>
+                        <button class="btn-adquirir" onclick="seleccionarPlan('Premium', 'Trimestral', 816)">Continuar</button>
+                    </div>
+
+                    <!-- Plan Semestral Premium -->
+                    <div class="columna-plan">
+                        <div class="plan-contenido">
+                            <div class="plan-titulo">Semestral</div>
+                            <div class="costo-total">Semestral $1,140.00</div>
+                            <div class="equivalente-texto">Equivalente a</div>
+                            <div class="costo-mensual">$190.00 <span class="texto-chico">al mes</span></div>
+                        </div>
+                        <button class="btn-adquirir" onclick="seleccionarPlan('Premium', 'Semestral', 1140)">Continuar</button>
+                    </div>
+
+                    <!-- Plan Anual Premium (Destacado) -->
+                    <div class="columna-plan destacado">
+                        <span class="badge-recomendado">Recomendado</span>
+                        <div class="plan-contenido">
+                            <div class="plan-titulo">Anual</div>
+                            <div class="costo-total">Anual $1,800.00</div>
+                            <div class="equivalente-texto">Equivalente a</div>
+                            <div class="costo-mensual">$150.00 <span class="texto-chico">al mes</span></div>
+                        </div>
+                        <button class="btn-adquirir" onclick="seleccionarPlan('Premium', 'Anual', 1800)">Continuar</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: PLAN ELITE -->
+        <section class="paquete-bloque">
+            <h2 class="categoria-titulo">Plan Elite</h2>
+
+            <div class="paquete-card">
+                <div class="tabla-paquetes">
+                    
+                    <!-- Columna Beneficios Elite con Scroll -->
+                    <div class="columna-beneficios">
+                        <div class="beneficios-titulo">Beneficios</div>
+                        <div class="beneficios-scroll-container">
+                            <ul class="lista-beneficios">
+                                <li><span class="check-icon">✓</span> Encuesta inicial de salud (opcional)</li>
+                                <li><span class="check-icon">✓</span> Acceso a pláticas/conferencias sobre temas de salud y testimoniales</li>
+                                <li><span class="check-icon">✓</span> Programa personalizado de ejercicio cardiovascular</li>
+                                <li><span class="check-icon">✓</span> Cambio de rutina mensual</li>
+                                <li><span class="check-icon">✓</span> Orientación nutricional</li>
+                                <li><span class="check-icon">✓</span> Programa de tono muscular o especial (para acelerar resultados)</li>
+                                <li><span class="check-icon">✓</span> Requerimiento calórico personalizado (para apoyarte en tus metas)</li>
+                                <li><span class="check-icon">✓</span> Acceso a clases grupales calendarizadas (para mantenerte motivado)</li>
+                                <li><span class="check-icon">✓</span> Acceso a webinars exclusivos</li>
+                                <li><span class="check-icon">✓</span> Acceso a todos los servicios de programa (Cardio, Tono Muscular y Especial)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Plan Trimestral Elite -->
+                    <div class="columna-plan">
+                        <div class="plan-contenido">
+                            <div class="plan-titulo">Trimestral</div>
+                            <div class="costo-total">Trimestral $900.00</div>
+                            <div class="equivalente-texto">Equivalente a</div>
+                            <div class="costo-mensual">$300.00 <span class="texto-chico">al mes</span></div>
+                        </div>
+                        <button class="btn-adquirir" onclick="seleccionarPlan('Elite', 'Trimestral', 900)">Continuar</button>
+                    </div>
+
+                    <!-- Plan Semestral Elite -->
+                    <div class="columna-plan">
+                        <div class="plan-contenido">
+                            <div class="plan-titulo">Semestral</div>
+                            <div class="costo-total">Semestral $1,350.00</div>
+                            <div class="equivalente-texto">Equivalente a</div>
+                            <div class="costo-mensual">$225.00 <span class="texto-chico">al mes</span></div>
+                        </div>
+                        <button class="btn-adquirir" onclick="seleccionarPlan('Elite', 'Semestral', 1350)">Continuar</button>
+                    </div>
+
+                    <!-- Plan Anual Elite (Destacado) -->
+                    <div class="columna-plan destacado">
+                        <span class="badge-recomendado">Recomendado</span>
+                        <div class="plan-contenido">
+                            <div class="plan-titulo">Anual</div>
+                            <div class="costo-total">Anual $2,136.00</div>
+                            <div class="equivalente-texto">Equivalente a</div>
+                            <div class="costo-mensual">$178.00 <span class="texto-chico">al mes</span></div>
+                        </div>
+                        <button class="btn-adquirir" onclick="seleccionarPlan('Elite', 'Anual', 2136)">Continuar</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: TABLA COMPARATIVA GENERAL DE PAQUETES -->
+        <section class="paquete-bloque">
+            <h2 class="categoria-titulo">Tabla Comparativa de Beneficios</h2>
+
+            <div class="paquete-card comparativa-card">
+                <div class="tabla-comparativa-wrapper">
+                    <table class="tabla-comparativa-general">
+                        <thead>
+                            <tr>
+                                <th class="th-beneficio">Beneficios</th>
+                                <th>Plan Básico</th>
+                                <th>Plan Premium</th>
+                                <th>Plan Elite</th>
+                                <th>Prueba 15 días</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Encuesta inicial de salud (opcional)</td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td><span class="check-blue">✔</span></td>
+                               
+                            </tr>
+                            <tr>
+                                <td>Acceso a pláticas/conferencias sobre temas de salud y testimoniales</td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Programa personalizado de ejercicio cardiovascular</td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Cambio de rutina mensual</td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Orientación nutricional</td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Programa de tono muscular o especial (para acelerar resultados)</td>
+                                <td>-</td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Requerimiento calórico personalizado (para apoyarte en tus metas)</td>
+                                <td>-</td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Acceso a clases grupales calendarizadas (para mantenerte motivado)</td>
+                                <td>-</td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Acceso a webinars exclusivos</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Acceso a todos los servicios de programa (Cardio, Tono Muscular y Especial)</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td><span class="check-blue">✔</span></td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Script de apoyo para la selección de planes -->
+    <script>
+        function seleccionarPlan(categoria, frecuencia, precio) {
+            console.log(`Plan seleccionado: ${categoria} - ${frecuencia} ($${precio})`);
+            alert(`Seleccionaste el plan ${categoria} ${frecuencia}. ¡Continuemos con tu registro!`);
+        }
+    </script>
+</body>
+</html>

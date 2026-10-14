@@ -1,0 +1,319 @@
+/* ==========================================
+   ESTILOS GENERALES Y MAQUETACIÓN TOP
+   ========================================== */
+body {
+    background-color: #f4f6f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px 15px;
+    color: #333;
+    /* Usamos el scroll nativo del navegador eliminando restricciones de altura y flex */
+    height: auto;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.top-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding-bottom: 30px;
+    box-sizing: border-box;
+}
+
+/* ENCABEZADO */
+.top-header {
+    text-align: center;
+    width: 100%;
+}
+
+.group-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    letter-spacing: 0.5px;
+    margin: 0 0 4px 0;
+}
+
+.group-name {
+    color: #0b3c5d;
+    text-decoration: underline;
+}
+
+.group-subtitle {
+    font-size: 0.95rem;
+    color: #475569;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+}
+
+.top-divider {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 8px auto 15px auto;
+    width: 90%;
+}
+
+/* BOTONES DE FILTRO */
+.top-filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    background: #f1f5f9;
+    padding: 5px;
+    border-radius: 12px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-top-filter {
+    background-color: transparent;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-top-filter:hover {
+    color: #0b3c5d;
+    background-color: rgba(11, 60, 93, 0.08);
+}
+
+.btn-top-filter.active {
+    background-color: #ffffff;
+    color: #0b3c5d;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* GRID PRINCIPAL DE CONTENIDO (APILADO PARA MEJOR LECTURA) */
+.top-content-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.top-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* PODIO (PODIUM-CARD) */
+.podium-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 15px;
+    min-height: 200px;
+    width: 100%;
+}
+
+.podium-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px 10px;
+    flex: 1;
+    max-width: 200px;
+}
+
+/* Elevación visual y distinción para el 1er lugar */
+.place-1 { 
+    order: 2; 
+    background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+    border-color: #22c55e;
+    box-shadow: 0 6px 16px rgba(34, 197, 94, 0.12);
+    max-width: 220px;
+}
+.place-2 { order: 1; }
+.place-3 { order: 3; }
+
+.avatar-wrapper {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.user-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 30px;
+    border: 3px solid #94a3b8;
+}
+
+.place-1 .user-avatar {
+    width: 85px;
+    height: 85px;
+    font-size: 38px;
+    border-color: #eab308;
+}
+
+.place-3 .user-avatar {
+    border-color: #b45309;
+}
+
+/* CORONAS */
+.crown {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+}
+
+.crown-gold { color: #eab308; font-size: 26px; top: -18px; }
+.crown-blue { color: #64748b; }
+.crown-bronze { color: #b45309; }
+
+.user-name {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 4px 0 2px 0;
+    line-height: 1.2;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-stats {
+    font-size: 0.82rem;
+    color: #334155;
+    font-weight: 600;
+    display: block;
+}
+
+/* LISTA DERECHA / INFERIOR (RANKING-LIST) */
+.ranking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ranking-item {
+    background-color: #f1f5f9;
+    border: 2px solid #0b3c5d;
+    border-radius: 12px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.rank-number {
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: #0b3c5d;
+    min-width: 25px;
+}
+
+.ranking-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 20px;
+    border: 2px solid #0b3c5d;
+}
+
+.ranking-name {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #1e293b;
+    flex-grow: 1;
+}
+
+.ranking-pts {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+/* ==========================================
+   ANIMACIONES Y RESPONSIVO (MÓVILES)
+   ========================================== */
+@keyframes topFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.top-fade-animated {
+    animation: topFadeIn 0.35s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Adaptabilidad perfecta para celulares */
+@media (max-width: 768px) {
+    body {
+        padding: 10px 8px;
+    }
+
+    .top-wrapper {
+        padding: 0;
+        gap: 10px;
+    }
+
+    /* El podio pasa a apilarse de forma vertical para que los 3 puestos respiren bien */
+    .podium-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .podium-item {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Orden lógico en vertical para celulares: 1er lugar arriba, luego 2do y 3ero */
+    .place-1 { order: 1; max-width: 100%; }
+    .place-2 { order: 2; }
+    .place-3 { order: 3; }
+
+    /* Ajuste de elementos internos de la lista de ranking para pantallas chicas */
+    .ranking-item {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    .ranking-name {
+        font-size: 0.9rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

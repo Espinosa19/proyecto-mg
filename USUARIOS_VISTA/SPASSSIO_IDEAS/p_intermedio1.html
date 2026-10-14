@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P INTERMEDIO 01</title>
+
+<link rel="stylesheet" href="css/p_intermedio1.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+<style>
+    .hero-box {
+        position: relative;
+        padding: 30px;
+        margin-bottom: 30px;
+        background: rgba(255, 255, 255, 0.55);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+    .hero-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .badge-nivel {
+        background: rgba(74, 175, 235, 0.15);
+        color: #1d2a3a;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .hero-titulo {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #1d2a3a;
+        margin: 5px 0 15px 0;
+        letter-spacing: -0.5px;
+        text-align: left;
+    }
+    .quote-box {
+        position: relative;
+        background: rgba(255, 255, 255, 0.6);
+        border-left: 4px solid #4aafeb;
+        padding: 16px 20px 16px 45px;
+        border-radius: 0 14px 14px 0;
+        margin: 0 0 20px 0;
+    }
+    .quote-icon {
+        position: absolute;
+        left: 15px;
+        top: 18px;
+        color: #4aafeb;
+        font-size: 1.1rem;
+        opacity: 0.7;
+    }
+    .quote-box .frase-cita {
+        margin: 0;
+        font-style: italic;
+        font-weight: 700;
+        color: #2c3e50;
+        font-size: 1rem;
+    }
+    .quote-box cite {
+        display: block;
+        font-size: 0.85rem;
+        color: #555;
+        margin-top: 4px;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+    .quote-box .texto-instrucciones {
+        color: #444444;
+        font-size: 0.92rem;
+        line-height: 1.6;
+        font-style: normal;
+    }
+    .quote-box .texto-instrucciones p {
+        margin: 0 0 10px 0;
+    }
+    .quote-box .texto-instrucciones p:last-child {
+        margin-bottom: 0;
+    }
+    .alerta-seguridad {
+        background: #fff5f5;
+        border: 1px solid #fed7d7;
+        border-radius: 12px;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #c53030;
+        font-size: 0.82rem;
+        line-height: 1.3;
+    }
+    .alerta-seguridad i {
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+    .grid-detalles-2x2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 10px;
+    }
+    .btn-detalles-card {
+        padding: 18px 12px;
+        font-size: 1rem;
+        font-weight: 700;
+        border-radius: 16px;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .progress-ring-container {
+        position: relative;
+        width: 90px;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 6px;
+    }
+    .progress-ring {
+        transform: rotate(-90deg);
+    }
+    .ring-bg {
+        fill: transparent;
+        stroke: #e0e0e0;
+        stroke-width: 6;
+    }
+    .ring-progress {
+        fill: transparent;
+        stroke: #4aafeb;
+        stroke-width: 6;
+        stroke-linecap: round;
+        stroke-dasharray: 226.195; 
+        stroke-dashoffset: 0; 
+        transition: stroke-dashoffset 0.3s linear;
+    }
+    .timer-text {
+        position: absolute;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .timer-numero-grande {
+        font-size: 72px;
+        font-weight: 800;
+        color: #1d2a3a;
+        line-height: 1;
+        margin: 0;
+    }
+    .timer-right {
+        width: 120px;
+        height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .img-ejercicio-anim {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        transition: opacity 0.3s ease;
+    }
+    .fallback-icon {
+        font-size: 3.5rem;
+        color: #4aafeb;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <div class="hero-box">
+        <div class="hero-header">
+            <a href="rutinas.html" class="btn-regresar">
+                <i class="fa-solid fa-right-to-bracket"></i> Regresar
+            </a>
+            <span class="badge-nivel"><i class="fa-solid fa-fire"></i> Nivel Intermedio</span>
+        </div>
+
+        <h1 class="hero-titulo">P INTERMEDIO 01</h1>
+
+        <blockquote class="quote-box">
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p class="frase-cita">“UN VIAJE DE MIL MILLAS COMIENZA CON EL PRIMER PASO”</p>
+            <cite>— LAO-TSE</cite>
+            
+            <div class="texto-instrucciones">
+                <p>Realiza calentamiento de articulaciones durante 1 minuto, pasa a los 5 ejercicios principales de 1 minuto cada uno y finaliza con 1 minuto de relajación, sumando un total de 7 minutos de rutina. Puedes visualizar todas las fases en la parte inferior de esta página.</p>
+                <p>Al final de tu rutina te pido que te autoevalúes para analizar tu progreso.</p>
+            </div>
+        </blockquote>
+
+        <div class="alerta-seguridad">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <div>
+                <strong>SI TE SIENTES MAL EN EL EJERCICIO SUSPENDE HASTA SABER SU ORIGEN O SI ALGUN EJERCICIO TE LASTIMA O INCOMODA REPORTALO DIRECTAMENTE CON TU ENTRENADOR PARA CAMBIAR ESE EJERCICIO.</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-ejercicios">
+        <div class="lista">
+            <h2 class="titulo-ejercicios">Mis ejercicios</h2>
+            <button onclick="verEjercicio(0)">Calentamiento articular</button>
+            <button onclick="verEjercicio(1)">P I 1.1 Simulación saltar cuerda</button>
+            <button onclick="verEjercicio(2)">P I 1.2 Trote talones</button>
+            <button onclick="verEjercicio(3)">P I 1.3 Box</button>
+            <button onclick="verEjercicio(4)">P I 1.4 Lagartijas</button>
+            <button onclick="verEjercicio(5)">P I 1.5 Caperuzas</button>
+            <button onclick="verEjercicio(6)">Relajación y estiramientos</button>
+        </div>
+
+        <div class="botones-seccion-lista">
+            <h2 class="titulo-ejercicios">Detalles</h2>
+            <div class="grid-detalles-2x2">
+                <button class="btn-video btn-detalles-card" onclick="abrirVideo('tutorial')">Tutorial</button>
+                <button class="btn-video btn-detalles-card" onclick="abrirVideo('calentamiento')">Calentamiento</button>
+                <button class="btn-video btn-detalles-card" onclick="abrirVideo('intensidad')">Intensidad</button>
+                <button class="btn-video btn-detalles-card" onclick="abrirVideo('relajacion')">Relajación</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="timer-box">
+    <div class="timer-header">
+        <h2 id="ejercicio">Calentamiento articular</h2>
+    </div>
+
+    <div class="timer-body">
+        <div class="timer-left">
+            <span class="label-total">Tiempo total:</span>
+            <div class="progress-ring-container">
+                <svg class="progress-ring" width="90" height="90">
+                    <circle class="ring-bg" cx="45" cy="45" r="36" />
+                    <circle class="ring-progress" id="ringProgress" cx="45" cy="45" r="36" />
+                </svg>
+                <div class="timer-text">
+                    <span class="cronometro" id="tiempo-total">00:00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timer-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div id="timer" class="timer-numero-grande" style="line-height: 1; margin: 0;">60</div>
+            <span class="seg-label" style="margin-top: 5px; font-weight: 600; color: #555;">Seg</span>
+        </div>
+
+        <div class="timer-right" id="contenedor-img-timer">
+            <img id="img-ejercicio" 
+                 src="img/calentamiento.gif" 
+                 alt="Fase actual" 
+                 class="img-ejercicio-anim"
+                 onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-child-reaching fa-bounce fallback-icon\'></i>';">
+        </div>
+    </div>
+
+    <div class="timer-footer">
+        <div class="controles" style="width: 100%; display: flex; justify-content: center; gap: 10px;">
+            <button id="btn-iniciar-pausar" onclick="alternarIniciarPausar()">Iniciar</button>
+            <button onclick="reiniciar()">Reiniciar</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalEjercicio" class="modal">
+    <div class="modal-content">
+        <span class="cerrar" onclick="cerrar('modalEjercicio')">X</span>
+        <h2 id="titulo"></h2>
+        <p id="desc"></p>
+        <div id="contenedorMediaEjercicio"></div>
+    </div>
+</div>
+
+<div id="modalVideo" class="modal">
+    <div class="modal-content">
+        <span class="cerrar" onclick="cerrar('modalVideo')">X</span>
+        <video id="video" controls></video>
+    </div>
+</div>
+
+<div id="modal1" class="modal-full">
+    <div class="modal-box">
+        <div class="icono">i</div>
+        <h2>Antes de empezar</h2>
+        <p>Bienvenido a tu rutina 🔥<br><br>Cada fase (calentamiento, 5 ejercicios y relajación) tiene una duración exacta de 1 minuto, completando 7 minutos en total.</p>
+        <button onclick="siguienteModal()">Continuar</button>
+    </div>
+</div>
+
+<div id="modal2" class="modal-full">
+    <div class="modal-box">
+        <div class="icono">!</div>
+        <h2>Precaución</h2>
+        <p>En caso de malestar durante el ejercicio, suspende hasta identificar la causa. Si algún ejercicio te lastima o incomoda, comunícalo directamente a tu entrenador para cambiarlo.</p>
+        <button onclick="cerrarModales()">Empezar</button>
+    </div>
+</div>
+
+<div class="musica-container">
+    <div class="glass-player">
+        <h3>🎧 Reproductor de Música de Spotify</h3>
+        <iframe src="https://open.spotify.com/embed/playlist/1E6D5TSJt4EcNWYCClGVB4?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div class="glass-player">
+        <h3>🎧 Reproductor de Música de SoundCloud</h3>
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/victor-zarraga-414151089/rutina-ejercicio&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_reposts=false&visual=true"></iframe>
+    </div>
+</div>
+
+<div id="chatbot">
+    <div id="chat-btn" onclick="toggleChat()"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Chatbot Icon"></div>
+    <div id="chat-box">
+        <div class="chat-header"><span>Spasssio Chat</span><button onclick="toggleChat()">✖</button></div>
+        <div id="chat-content"></div>
+        <div id="chat-options"></div>
+        <div id="typing">🤖 Escribiendo...</div>
+        <input type="text" id="chat-input" placeholder="Escribe..." onkeypress="enviar(event)">
+    </div>
+</div>
+
+<link rel="stylesheet" href="css/chatbot.css">
+<script src="js/chatbot.js"></script>
+
+<script src="js/rutina1.js"></script>
+
+</body>
+</html>

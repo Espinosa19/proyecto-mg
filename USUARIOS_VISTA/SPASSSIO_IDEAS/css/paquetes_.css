@@ -1,0 +1,439 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+/* Barra de navegación superior con Logo, Título y Botón Regresar */
+.navbar-superior {
+    width: 100%;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+    color: white;
+    padding: 14px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 50px;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Cuadro blanco para el logo */
+.nav-logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+}
+
+.nav-logo-link:hover {
+    transform: scale(1.05);
+}
+
+.nav-logo {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-titulo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+/* Estilos para el botón de Regresar */
+.btn-regresar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-regresar:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.flecha-regresar {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Secciones de Paquetes con mayor separación general */
+.paquetes-section {
+    width: 100%;
+    max-width: 1050px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* Bloque individual de cada paquete */
+.paquete-bloque {
+    display: flex;
+    flex-direction: column;
+}
+
+.categoria-titulo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 20px;
+    padding-left: 5px;
+    padding-top: 15px;
+}
+
+.paquete-card {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px 30px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e7eb;
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.paquete-card:hover {
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.09);
+}
+
+/* Grid de la tabla */
+.tabla-paquetes {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.columna-beneficios {
+    border-right: 2px solid #f3f4f6;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.beneficios-titulo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 15px;
+}
+
+/* CONTENEDOR CON SCROLL VERTICAL PARA BENEFICIOS */
+.beneficios-scroll-container {
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+/* Diseño personalizado de la barra de scroll */
+.beneficios-scroll-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.beneficios-scroll-container::-webkit-scrollbar-track {
+    background: #f8fafc;
+    border-radius: 10px;
+}
+
+.beneficios-scroll-container::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.beneficios-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.lista-beneficios {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.lista-beneficios li {
+    font-size: 0.9rem;
+    color: #4b5563;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.4;
+}
+
+.check-icon {
+    background-color: #0d8ca9;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Estilos de las columnas de planes */
+.columna-plan {
+    background: #fdfdfd;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.columna-plan:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    border-color: #cbd5e1;
+}
+
+.columna-plan.destacado {
+    background: #f0fdf4;
+    border-color: #86efac;
+    box-shadow: 0 4px 15px rgba(22, 163, 74, 0.08);
+}
+
+.columna-plan.destacado:hover {
+    box-shadow: 0 8px 22px rgba(22, 163, 74, 0.15);
+}
+
+.badge-recomendado {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #16a34a;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.plan-contenido {
+    margin-bottom: 20px;
+}
+
+.plan-titulo {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 14px;
+}
+
+.costo-total {
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-bottom: 6px;
+}
+
+.equivalente-texto {
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+
+.costo-mensual {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0d8ca9;
+}
+
+.texto-chico {
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+.columna-plan.destacado .costo-mensual {
+    color: #16a34a;
+}
+
+.btn-adquirir {
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    padding: 12px 0;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-adquirir:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-adquirir:active {
+    transform: scale(0.98);
+}
+
+.columna-plan.destacado .btn-adquirir {
+    background-color: #16a34a;
+}
+
+.columna-plan.destacado .btn-adquirir:hover {
+    background-color: #15803d;
+}
+
+/* ESTILOS PARA LA TABLA COMPARATIVA GENERAL */
+.tabla-comparativa-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-comparativa-general {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.tabla-comparativa-general th,
+.tabla-comparativa-general td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.tabla-comparativa-general th {
+    background-color: #f8fafc;
+    color: #1f2937;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.tabla-comparativa-general .th-beneficio {
+    text-align: left;
+    width: 40%;
+}
+
+.tabla-comparativa-general tbody td:first-child {
+    text-align: left;
+    color: #4b5563;
+    font-weight: 500;
+}
+
+.tabla-comparativa-general tbody tr:hover {
+    background-color: #fafbfc;
+}
+
+.check-blue {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0d8ca9;
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 11px;
+}
+
+/* Responsivo para tablets y celulares */
+@media (max-width: 900px) {
+    .tabla-paquetes {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .columna-beneficios {
+        grid-column: span 2;
+        border-right: none;
+        border-bottom: 2px solid #f3f4f6;
+        padding-bottom: 20px;
+        margin-bottom: 10px;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar-superior {
+        padding: 12px 15px;
+        margin-bottom: 35px;
+    }
+
+    .nav-logo {
+        height: 30px;
+    }
+
+    .nav-titulo {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .btn-regresar {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+    .paquetes-section {
+        padding: 0 15px;
+        gap: 40px;
+    }
+
+    .paquete-card {
+        padding: 25px 20px;
+        border-radius: 20px;
+    }
+
+    .tabla-paquetes {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .columna-beneficios {
+        grid-column: span 1;
+    }
+
+    .beneficios-scroll-container {
+        max-height: 200px;
+    }
+
+    .tabla-comparativa-general {
+        font-size: 0.8rem;
+    }
+}

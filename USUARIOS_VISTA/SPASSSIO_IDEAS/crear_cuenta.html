@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta - SPASSSIO</title>
+    <link rel="stylesheet" href="css/registro.css">
+</head>
+<body>
+
+    <main class="register-card">
+        <!-- Botón Regresar circular en la esquina superior izquierda -->
+        <a href="index.html" class="btn-regresar" title="Regresar" aria-label="Regresar">
+            <span class="arrow-icon">&#8592;</span>
+        </a>
+
+        <!-- Encabezado con Logo y Título -->
+        <header class="card-header">
+            <img src="img/logo.png" alt="Logo SPASSSIO" class="card-logo">
+            <h1>Crea tu cuenta</h1>
+        </header>
+
+        <!-- Formulario a dos columnas -->
+        <form class="register-form" action="inicio.html" method="GET">
+            <div class="form-grid">
+                <div class="input-group">
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre(s)" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+                </div>
+
+                <!-- Campo Edad -->
+                <div class="input-group">
+                    <input type="number" id="edad" name="edad" placeholder="Edad" min="1" max="120" required>
+                </div>
+
+                <!-- Desplegable de Estado Civil -->
+                <div class="input-group">
+                    <div class="select-wrapper">
+                        <select id="estado_civil" name="estado_civil" required>
+                            <option value="" disabled selected hidden>Estado civil</option>
+                            <option value="soltero">Soltero</option>
+                            <option value="casado">Casado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Desplegable de Sexo -->
+                <div class="input-group">
+                    <div class="select-wrapper">
+                        <select id="sexo" name="sexo" required>
+                            <option value="" disabled selected hidden>Sexo</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Desplegable de Nivel -->
+                <div class="input-group">
+                    <div class="select-wrapper">
+                        <select id="nivel" name="nivel" required>
+                            <option value="" disabled selected hidden>Nivel</option>
+                            <option value="bajo">Bajo</option>
+                            <option value="medio">Medio</option>
+                            <option value="avanzado">Avanzado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Desplegable de Objetivo -->
+                <div class="input-group">
+                    <div class="select-wrapper">
+                        <select id="objetivo" name="objetivo" required>
+                            <option value="" disabled selected hidden>Principal objetivo</option>
+                            <option value="perder_peso">Perder peso</option>
+                            <option value="ganar_musculo">Ganar músculo</option>
+                            <option value="mantenerse_saludable">Mantenerse saludable</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Espacio vacío en la grid para mantener la simetría de 2 columnas con el último select/password -->
+                <div class="input-group" style="visibility: hidden; display: none;"></div>
+
+                <div class="input-group">
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                        <button type="button" class="toggle-password" id="togglePassword" aria-label="Mostrar u ocultar contraseña">
+                            <svg class="icon-eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            <svg class="icon-eye-off" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                <line x1="1" y1="1" x2="23" y2="23"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="password-wrapper">
+                        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmar contraseña" required>
+                        <button type="button" class="toggle-password" id="toggleConfirmPassword" aria-label="Mostrar u ocultar contraseña">
+                            <svg class="icon-eye" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            <svg class="icon-eye-off" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                                <line x1="1" y1="1" x2="23" y2="23"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-crear">Regístrate</button>
+        </form>
+
+        <footer class="card-footer">
+            <p>¿Ya tienes cuenta? <a href="inicio_sesion.html" class="link-iniciar-sesion">Iniciar sesión</a></p>
+        </footer>
+    </main>
+
+    <!-- Script para los ojitos de contraseña -->
+    <script>
+        function setupPasswordToggle(buttonId, inputId) {
+            const toggleBtn = document.getElementById(buttonId);
+            const inputField = document.getElementById(inputId);
+
+            if (toggleBtn && inputField) {
+                toggleBtn.addEventListener('click', function () {
+                    const isPassword = inputField.getAttribute('type') === 'password';
+                    inputField.setAttribute('type', isPassword ? 'text' : 'password');
+                    this.classList.toggle('active', isPassword);
+                });
+            }
+        }
+
+        setupPasswordToggle('togglePassword', 'password');
+        setupPasswordToggle('toggleConfirmPassword', 'confirm_password');
+    </script>
+
+</body>
+</html>

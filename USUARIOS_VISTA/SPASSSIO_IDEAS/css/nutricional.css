@@ -1,0 +1,144 @@
+/* Estilos Generales y Resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  color: #2c3e50;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  overflow-y: auto;
+}
+
+/* Tarjeta Principal/Contenedor Blanco */
+.main-container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 28px;
+  padding: 32px 40px 60px 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  position: relative;
+  border: 1px solid #e2e8f0;
+}
+
+/* Botón Regresar */
+.btn-regresar {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #1a137a;
+  color: #f7fcff;
+  padding: 10px 22px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-bottom: 25px;
+}
+
+.btn-regresar:hover {
+  background-color: #89a2b0;
+  transform: translateX(-3px);
+}
+
+/* Encabezados y Textos */
+.header-content {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 45px auto;
+}
+
+.titulo-principal {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1c232b;
+  margin-bottom: 16px;
+}
+
+.subtitulo-info {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* Grid de Contenedores Centrados */
+.cards-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Base de las Tarjetas Nutricionales */
+.card-proximamente {
+  position: relative;
+  width: 280px;
+  height: 350px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px 22px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.card-proximamente:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Colores Pastel Específicos --- */
+.card-almuerzo {
+  background: linear-gradient(135deg, #fff3e6 0%, #ffe5cc 100%); /* Durazno / Naranja pastel muy suave */
+}
+
+.card-comida {
+  background: linear-gradient(135deg, #e8f8f0 0%, #d1f2e1 100%); /* Verde menta pastel */
+}
+
+.card-cena {
+  background: linear-gradient(135deg, #eef2ff 0%, #dfe7ff 100%); /* Azul / Lavanda pastel suave */
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.card-title {
+  color: #1e293b;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  margin-bottom: 10px;
+}
+
+/* Etiqueta / Estado Estilizada */
+.status-tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #475569;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}

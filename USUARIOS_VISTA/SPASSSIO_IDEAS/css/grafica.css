@@ -1,0 +1,584 @@
+/* ==========================================================================
+   RESET Y VARIABLES BASE
+   ========================================================================== */
+:root {
+    --bg-main: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-primary: #2d3748;
+    --text-muted: #718096;
+    --border-color: #e2e8f0;
+
+    /* Colores para los botones de puntos */
+    --puntos-0: #e2e8f0; /* Gris */
+    --text-0: #4a5568;
+    --puntos-1: #3182ce; /* Azul */
+    --puntos-2: #dd6b20; /* Naranja */
+    --puntos-3: #e53e3e; /* Rojo */
+
+    /* Paleta SPASSSIO */
+    --primary-color: #0a84b1;
+    --btn-periodo-active: #1e5872;
+    --btn-arrow-bg: #1390aa;
+    --btn-arrow-hover: #0e7287;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-y: auto; /* Permite scroll vertical fluido si el contenido crece */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px 10px;
+}
+
+/* ==========================================================================
+   ESTRUCTURA GENERAL DEL DASHBOARD (CENTRADO Y ANCHO COMPLETO)
+   ========================================================================== */
+.dashboard-wrapper {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.top-row,
+.middle-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    width: 100%;
+}
+
+/* Estilos compartidos de tarjetas */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   CONTENEDOR 1: TARJETA DE PERFIL
+   ========================================================================== */
+.card-perfil {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #fcfdfd 100%);
+    border: 1px solid var(--border-color);
+}
+
+.perfil-avatar-wrapper {
+    flex-shrink: 0;
+}
+
+.perfil-avatar-container {
+    position: relative;
+    width: 75px;
+    height: 75px;
+}
+
+.perfil-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 4px 12px rgba(10, 132, 177, 0.15);
+    background-color: #e2e8f0;
+}
+
+.status-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    background-color: #22c55e;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+}
+
+.perfil-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.usuario-nombre {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+}
+
+.lista-detalles {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.lista-detalles li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lista-detalles i {
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    width: 14px;
+    text-align: center;
+}
+
+.lista-detalles strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   CONTENEDOR 2: TARJETA DE CALIFICACIONES
+   ========================================================================== */
+.card-calificaciones {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pregunta-titulo {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.subtitulo-intensidad {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.botones-puntos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.btn-punto {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    color: #ffffff;
+}
+
+.btn-punto:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.btn-0 { background-color: var(--puntos-0); color: var(--text-0); }
+.btn-1 { background-color: var(--puntos-1); }
+.btn-2 { background-color: var(--puntos-2); }
+.btn-3 { background-color: var(--puntos-3); }
+
+/* ==========================================================================
+   SECCIÓN INTERMEDIA: SISTEMA DE CORONAS
+   ========================================================================== */
+/* Contenedor Explicación */
+.card-explicacion-coronas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.coronas-titulo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.coronas-subtitulo {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.lista-coronas-puntos {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.lista-coronas-puntos li {
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.dot-bullet {
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Contenedor Contador y Navegador */
+.card-contador-coronas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.coronas-navigator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.coronas-header-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.btn-coronas-arrow {
+    background: #e2e8f0;
+    border: none;
+    color: var(--text-primary);
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+    font-size: 0.85rem;
+}
+
+.btn-coronas-arrow:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.coronas-stats-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.stat-puntos-obtenidos span,
+.stat-tus-coronas span {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   CONTENEDOR INFERIOR: PESTAÑAS (GRÁFICA Y NOTAS)
+   ========================================================================== */
+.card-grafica {
+    width: 100%;
+}
+
+.tabs-header {
+    display: flex;
+    gap: 20px;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 14px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    padding-bottom: 8px;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.25s ease;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    color: var(--text-primary);
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.tab-content {
+    display: none !important;
+}
+
+.tab-content.active {
+    display: block !important;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* ==========================================================================
+   SECCIÓN INTERNA: PERIODOS Y VISTA DE GRÁFICAS
+   ========================================================================== */
+.periodos-container {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 0;
+    width: 100%;
+}
+
+.periodos-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.periodos-buttons {
+    display: flex;
+    gap: 6px;
+    background: #f8f9fa;
+    padding: 4px;
+    border-radius: 10px;
+    width: fit-content;
+    margin-bottom: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-periodo {
+    background: transparent;
+    border: none;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-periodo:hover:not(.active) {
+    color: var(--primary-color);
+    background: rgba(10, 132, 177, 0.08);
+}
+
+.btn-periodo.active {
+    background: #ffffff;
+    color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Navegador de periodos */
+.periodo-navigator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background: #f8fafc;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    max-width: 360px;
+    margin: 0 auto 20px auto;
+}
+
+.periodo-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label-periodo {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.rango-fechas {
+    font-size: 0.78rem;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.btn-nav-arrow {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+}
+
+.btn-nav-arrow:hover {
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+    transform: scale(1.05);
+}
+
+.grafica-render-area {
+    min-height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+    width: 100%;
+}
+
+.empty-data-msg {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   SECCIÓN INTERNA: VISTA DE NOTAS
+   ========================================================================== */
+.notas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.input-nota {
+    width: 100%;
+    height: 140px;
+    padding: 12px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    background-color: #f8fafc;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.input-nota:focus {
+    border-color: var(--primary-color);
+    background-color: #ffffff;
+}
+
+.btn-guardar-nota {
+    align-self: flex-end;
+    padding: 8px 18px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-guardar-nota:hover {
+    background-color: #08698f;
+    transform: translateY(-1px);
+}
+
+/* Animación */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(4px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVO (Móviles y Tablets)
+   ========================================================================== */
+@media (max-width: 850px) {
+    .top-row,
+    .middle-row {
+        grid-template-columns: 1fr;
+    }
+
+    .card-perfil {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .perfil-avatar-wrapper {
+        align-self: center;
+    }
+
+    .lista-detalles {
+        text-align: left;
+    }
+
+    .tab-btn {
+        font-size: 1rem;
+    }
+
+    .periodos-buttons {
+        gap: 6px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-periodo {
+        padding: 6px 12px;
+        font-size: 0.82rem;
+    }
+
+    .periodo-navigator {
+        gap: 12px;
+        max-width: 100%;
+    }
+}

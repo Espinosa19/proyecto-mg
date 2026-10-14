@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>SPASSSIO | Retos</title>
+
+<style>
+:root{
+  --glass:rgba(255,255,255,.25);
+  --dark:#111;
+  --gray:#2a2a2a;
+  --light:#e5e5e5;
+}
+
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#f2f2f2,#bdbdbd);
+}
+
+/* ---------- MODALES ---------- */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:100;
+}
+
+.modal-card{
+  background:rgba(255,255,255,.35);
+  backdrop-filter:blur(20px);
+  border-radius:26px;
+  padding:40px;
+  text-align:center;
+  box-shadow:0 30px 60px rgba(0,0,0,.25);
+}
+
+.modal-card button{
+  padding:12px 22px;
+  border-radius:14px;
+  border:none;
+  background:#111;
+  color:white;
+  cursor:pointer;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar{
+  width:220px;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(20px);
+  padding:15px;
+  color:white;
+  overflow-y:auto;
+  position:fixed;
+  top:0;
+  bottom:0;
+}
+
+.level-btn{
+  width:100%;
+  padding:12px;
+  margin-bottom:10px;
+  border:none;
+  border-radius:14px;
+  text-align:left;
+  font-weight:600;
+}
+
+.level-done{background:#dcdcdc;color:#555;}
+.level-current{background:#111;color:white;}
+.level-locked{background:#2a2a2a;color:#777;}
+
+/* ---------- CONTENIDO ---------- */
+.content{
+  margin-left:240px;
+  padding:20px;
+  display:grid;
+  grid-template-columns: 1fr 420px;
+  gap:20px;
+}
+
+.main{display:flex;flex-direction:column;gap:20px;}
+
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(20px);
+  border-radius:24px;
+  padding:25px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+.reto{
+  background:rgba(0,0,0,.15);
+  border-radius:16px;
+  padding:14px;
+  margin-top:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.reto.completado{opacity:.5;text-decoration:line-through;}
+
+button{
+  padding:10px 16px;
+  border:none;
+  border-radius:14px;
+  background:#111;
+  color:white;
+  cursor:pointer;
+}
+
+/* ---------- VIDEOS ---------- */
+.videos{display:flex;flex-direction:column;gap:20px;}
+.video-box{
+  height:200px;
+  background:rgba(0,0,0,.15);
+  border-radius:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#555;
+  font-weight:600;
+}
+
+/* ---------- BOTÓN REGRESAR ---------- */
+.back-btn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  padding:10px 18px;
+  border-radius:14px;
+  background:#111;
+  color:white;
+  border:none;
+  cursor:pointer;
+  z-index:5;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MODAL INICIO -->
+<div class="modal" id="inicioModal">
+  <div class="modal-card">
+    <h2>🔥 ¿Estás listo para tu reto de los 100 días?</h2>
+    <button onclick="cerrarInicio()">Empecemos</button>
+  </div>
+</div>
+
+<!-- MODAL FINAL -->
+<div class="modal" id="finalModal" style="display:none">
+  <div class="modal-card">
+    <h2>🎉 Felicidades</h2>
+    <p>
+      Realizaste tu reto en tiempo y forma.<br>
+      Regresa mañana para no perder tu racha de
+      <strong><span id="rachaFinal"></span></strong> días 🔥
+    </p>
+    <button onclick="cerrarFinal()">Cerrar</button>
+  </div>
+</div>
+
+<button class="back-btn" onclick="window.location.href='panel.html'">← Regresar</button>
+
+<div class="sidebar" id="sidebar"></div>
+
+<div class="content">
+  <div class="main">
+    <div class="glass">
+      🔥 Racha entrenamiento: <strong><span id="racha">0</span></strong> días
+    </div>
+
+    <div class="glass">
+      <h2 id="nivelTitulo"></h2>
+      <div id="retos"></div>
+    </div>
+
+    <div class="glass" id="aguaCard">
+      <h3>💧 Reto indispensable</h3>
+      <p>Tomar 2 litros de agua hoy</p>
+      🔥 Racha agua: <span id="rachaAgua">0</span><br><br>
+      <button onclick="agua(true)">Sí los tomé</button>
+      <button onclick="agua(false)">Hoy no</button>
+    </div>
+  </div>
+
+ <div class="videos">
+
+  <video class="video-box" controls>
+    <source src="img/sentadilla.mp4" type="video/mp4">
+    Tu navegador no soporta este video.
+  </video>
+
+  <video class="video-box" controls>
+    <source src="img/zancada.mp4" type="video/mp4">
+    Tu navegador no soporta este video.
+  </video>
+
+  <video class="video-box" controls>
+    <source src="img/plancha.mp4" type="video/mp4">
+    Tu navegador no soporta este video.
+  </video>
+
+</div>
+
+<script>
+let nivelActual = Number(localStorage.getItem("nivelActual")) || 1;
+let nivelMax = Number(localStorage.getItem("nivelMax")) || 1;
+let racha = Number(localStorage.getItem("racha")) || 0;
+let rachaAgua = Number(localStorage.getItem("rachaAgua")) || 0;
+let retosCompletados = false;
+
+document.getElementById("racha").innerText = racha;
+document.getElementById("rachaAgua").innerText = rachaAgua;
+
+const sidebar = document.getElementById("sidebar");
+
+function cerrarInicio(){
+  document.getElementById("inicioModal").style.display="none";
+}
+
+function cerrarFinal(){
+  window.location.href="panel.html";
+}
+
+function renderSidebar(){
+  sidebar.innerHTML="";
+  for(let i=1;i<=100;i++){
+    let btn=document.createElement("button");
+    btn.innerText="Nivel "+i;
+
+    if(i < nivelActual){
+      btn.className="level-btn level-done";
+    }else if(i === nivelActual){
+      btn.className="level-btn level-current";
+      btn.onclick=()=>cargarNivel(i);
+      setTimeout(()=>btn.scrollIntoView({block:"center"}),300);
+    }else{
+      btn.className="level-btn level-locked";
+    }
+    sidebar.appendChild(btn);
+  }
+}
+
+function obtenerRetos(n){
+  return [
+    `Sentadilla ${5+n} repeticiones`,
+    `${n*5} Zancadas ida y vuelta`,
+    `${n*5+5} Segundos de plancha`
+  ];
+}
+
+let completados=[];
+
+function cargarNivel(n){
+  completados=[];
+  retosCompletados=false;
+  nivelActual=n;
+  localStorage.setItem("nivelActual",nivelActual);
+  document.getElementById("nivelTitulo").innerText="Nivel "+n;
+  let cont=document.getElementById("retos");
+  cont.innerHTML="";
+  obtenerRetos(n).forEach((r,i)=>{
+    let div=document.createElement("div");
+    div.className="reto";
+    div.innerHTML=`${r}<button onclick="hecho(${i},this)">Hecho</button>`;
+    cont.appendChild(div);
+  });
+}
+
+function hecho(i,btn){
+  if(!completados.includes(i)){
+    completados.push(i);
+    btn.parentElement.classList.add("completado");
+  }
+  if(completados.length===3){
+    retosCompletados=true;
+  }
+}
+
+function agua(ok){
+  if(!retosCompletados) return;
+
+  rachaAgua = ok ? rachaAgua+1 : 0;
+  racha++;
+  nivelActual++;
+  nivelMax = Math.max(nivelMax,nivelActual);
+
+  localStorage.setItem("rachaAgua",rachaAgua);
+  localStorage.setItem("racha",racha);
+  localStorage.setItem("nivelActual",nivelActual);
+  localStorage.setItem("nivelMax",nivelMax);
+
+  document.getElementById("rachaFinal").innerText = racha;
+  document.getElementById("finalModal").style.display="flex";
+}
+
+renderSidebar();
+cargarNivel(nivelActual);
+</script>
+
+</body>
+</html>

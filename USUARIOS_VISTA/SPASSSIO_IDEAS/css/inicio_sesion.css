@@ -1,0 +1,331 @@
+/* Importación de tipografía geométrica */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* Reset básico y tipografía general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Ocultar iconos nativos de revelado de contraseña (Edge / IE / Safari / Chrome) */
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+
+/* Fondo y contenedor general (La imagen se maneja desde el HTML) */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f2f5; /* Color de respaldo */
+    padding: 20px;
+}
+
+/* Tarjeta central semitransparente */
+.login-card {
+    position: relative; /* Indispensable para posicionar el botón internamente */
+    background: rgba(238, 236, 231, 0.92);
+    width: 100%;
+    max-width: 380px;
+    padding: 45px 30px 35px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
+    text-align: center;
+}
+
+/* Botón Regresar posicionado en la esquina superior izquierda DE LA TARJETA */
+.btn-regresar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    color: #222222;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.btn-regresar .arrow-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    font-weight: 700;
+    margin-top: -2px;
+}
+
+/* Efectos al pasar el cursor por el botón circular */
+.btn-regresar:hover {
+    background-color: #ffffff;
+    color: #00b4b6;
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-regresar:active {
+    transform: scale(0.95);
+}
+
+/* Encabezado con logo y título */
+.card-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1.5px solid #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos para el Logo centrado */
+.card-logo {
+    max-width: 130px; /* Ajusta según el tamaño de tu logo */
+    height: auto;
+    margin-bottom: 12px;
+    object-fit: contain;
+}
+
+.card-header h1 {
+    font-size: 1.65rem;
+    color: #1a1a1a;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+}
+
+/* Formulario */
+.login-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+/* Contenedor relativo para el campo de contraseña */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Estilo de las casillas */
+.input-group input {
+    width: 100%;
+    padding: 13px 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 1px solid #c0c0c0;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.85);
+    outline: none;
+    transition: all 0.2s ease;
+    color: #222222;
+}
+
+/* Margen interno derecho para evitar que el texto quede detrás del ojito */
+.password-wrapper input {
+    padding-right: 48px;
+}
+
+.input-group input::placeholder {
+    color: #777777;
+    font-weight: 500;
+}
+
+.input-group input:focus {
+    border-color: #00b4b6;
+    box-shadow: 0 0 6px rgba(0, 180, 182, 0.25);
+    background-color: #ffffff;
+}
+
+/* Botón del ojito alineado verticalmente dentro de la casilla */
+.toggle-password {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #555555;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 5;
+    transition: color 0.2s ease;
+}
+
+/* Estado inicial: Muestra ojo abierto y oculta ojo tachado */
+.toggle-password .icon-eye {
+    display: block;
+}
+
+.toggle-password .icon-eye-off {
+    display: none;
+}
+
+/* Estado activo (al hacer clic): Oculta ojo abierto y muestra ojo tachado */
+.toggle-password.active .icon-eye {
+    display: none;
+}
+
+.toggle-password.active .icon-eye-off {
+    display: block;
+}
+
+.toggle-password:hover,
+.toggle-password.active {
+    color: #00b4b6;
+}
+
+/* Botón Iniciar sesión */
+.btn-continuar {
+    background-color: #00b4b6;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s;
+    margin-top: 8px;
+    margin-bottom: 14px;
+}
+
+.btn-continuar:hover {
+    background-color: #009395;
+}
+
+.btn-continuar:active {
+    transform: scale(0.98);
+}
+
+/* Enlace "¿Olvidaste tu contraseña?" */
+.forgot-password {
+    margin-bottom: 18px;
+}
+
+.forgot-password a {
+    color: #4a7bb0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.forgot-password a:hover {
+    color: #2b5580;
+}
+
+/* Pie de tarjeta */
+.card-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.card-footer span {
+    font-size: 0.92rem;
+    color: #555555;
+    font-weight: 500;
+}
+
+.link-crear-cuenta {
+    color: #4a7bb0;
+    font-size: 0.92rem;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.link-crear-cuenta:hover {
+    color: #2b5580;
+}
+
+/* ==========================================
+   MEDIA QUERIES (RESPONSIVIDAD)
+   ========================================== */
+
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .btn-regresar {
+        top: 15px;
+        left: 15px;
+        width: 34px;
+        height: 34px;
+    }
+
+    .btn-regresar .arrow-icon {
+        font-size: 1.1rem;
+    }
+
+    .card-logo {
+        max-width: 100px;
+    }
+
+    .login-card {
+        padding: 35px 20px 25px 20px;
+        border-radius: 16px;
+    }
+
+    .card-header h1 {
+        font-size: 1.35rem;
+    }
+
+    .input-group input {
+        padding: 11px 14px;
+        font-size: 0.9rem;
+    }
+
+    .password-wrapper input {
+        padding-right: 42px;
+    }
+
+    .toggle-password {
+        right: 12px;
+    }
+
+    .btn-continuar {
+        padding: 11px;
+        font-size: 0.98rem;
+    }
+
+    .forgot-password a,
+    .card-footer span,
+    .link-crear-cuenta {
+        font-size: 0.85rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .login-card {
+        max-width: 400px;
+        padding: 45px 35px 40px 35px;
+    }
+
+    .card-header h1 {
+        font-size: 1.7rem;
+    }
+}

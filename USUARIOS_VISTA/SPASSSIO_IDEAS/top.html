@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Ganadores - SPASSSIO</title>
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Estilo propio del Top -->
+    <link rel="stylesheet" href="css/tops.css">
+</head>
+<body>
+
+    <main class="top-wrapper">
+        
+        <!-- ENCABEZADO DE GRUPO -->
+        <header class="top-header">
+            <h1 class="group-title">GRUPO: <span class="group-name">PRUEBA</span></h1>
+            <p class="group-subtitle">¡Descubre el lugar que ocupas y motívate a avanzar!</p>
+            <hr class="top-divider">
+        </header>
+
+        <!-- BOTONES DE FILTRO (PERÍODOS) -->
+        <div class="top-filter-buttons">
+            <button class="btn-top-filter" onclick="filtrarTop('semanal', this)">Semanal</button>
+            <button class="btn-top-filter active" onclick="filtrarTop('mes', this)">Este Mes</button>
+            <button class="btn-top-filter" onclick="filtrarTop('ano', this)">Este Año</button>
+        </div>
+
+        <!-- CONTENEDOR PRINCIPAL: PODIO Y LISTADO -->
+        <div class="top-content-grid">
+            
+            <!-- TARJETA IZQUIERDA: PODIO DEL TOP 3 -->
+            <article class="top-card podium-card">
+                <div class="podium-container">
+                    
+                    <!-- 2DO LUGAR -->
+                    <div class="podium-item place-2">
+                        <div class="avatar-wrapper">
+                            <span class="crown crown-blue"><i class="fas fa-crown"></i></span>
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <p class="user-name">2. US8 Apellido no disponible</p>
+                        <span class="user-stats">Puntos totales: 0</span>
+                        <span class="user-stats">Coronas: 1</span>
+                    </div>
+
+                    <!-- 1ER LUGAR -->
+                    <div class="podium-item place-1">
+                        <div class="avatar-wrapper">
+                            <span class="crown crown-gold"><i class="fas fa-crown"></i></span>
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <p class="user-name">1. US7 Apellido no disponible</p>
+                        <span class="user-stats">Puntos totales: 0</span>
+                        <span class="user-stats">Coronas: 1</span>
+                    </div>
+
+                    <!-- 3ER LUGAR -->
+                    <div class="podium-item place-3">
+                        <div class="avatar-wrapper">
+                            <span class="crown crown-bronze"><i class="fas fa-crown"></i></span>
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <p class="user-name">3. US49 Apellido no disponible</p>
+                        <span class="user-stats">Puntos totales: 0</span>
+                        <span class="user-stats">Coronas: 1</span>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- TARJETA DERECHA: RESTO DE LA LISTA -->
+            <article class="top-card list-card">
+                <div class="ranking-list" id="ranking-list-container">
+                    
+                    <!-- ÍTEM DE POSICIÓN #4 -->
+                    <div class="ranking-item">
+                        <span class="rank-number">#4</span>
+                        <div class="ranking-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="ranking-name">US52 Apellido no disponible</span>
+                        <span class="ranking-pts">0 pts</span>
+                    </div>
+
+                </div>
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- Script del módulo -->
+    <script src="js/tops.js"></script>
+</body>
+</html>

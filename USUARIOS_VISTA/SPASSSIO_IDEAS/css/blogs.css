@@ -1,0 +1,254 @@
+/* ==========================================================================
+   SECCIÓN DE BLOGS (DISEÑO HORIZONTAL CON IMAGEN Y BOTÓN AZUL)
+   ========================================================================== */
+
+/* Título principal de la sección de Blogs (Espaciado mejorado) */
+.blogs-section-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #222222;
+    margin: 80px 0 24px 0; /* 👈 Aumentamos a 50px arriba para separar de las tarjetas superiores */
+}
+
+.blogs-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.blog-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 25px 0; /* 👈 Más padding interno para dar respiro entre elementos */
+    width: 100%;
+    transition: background-color 0.2s ease;
+}
+
+/* Imagen del Blog */
+.blog-img-wrapper {
+    flex-shrink: 0;
+    width: 150px;
+    height: 105px;
+    border-radius: 14px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra suave para integración visual */
+}
+
+.blog-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto hover ligero a la imagen del blog */
+.blog-item:hover .blog-img {
+    transform: scale(1.04);
+}
+
+/* Contenido / Texto */
+.blog-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.blog-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 6px 0;
+}
+
+.blog-desc {
+    font-size: 0.9rem;
+    color: #555555;
+    line-height: 1.45;
+    margin: 0;
+    max-width: 520px;
+}
+
+/* Botón "Saber más" */
+.blog-action {
+    flex-shrink: 0;
+}
+
+.btn-saber-mas {
+    display: inline-block;
+    background-color: #0088cc; /* Azul distintivo */
+    color: #ffffff;
+    padding: 10px 22px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.btn-saber-mas:hover {
+    background-color: #006699;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 136, 204, 0.3);
+}
+
+.btn-saber-mas:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Línea divisoria entre blogs */
+.blog-divider {
+    border: none;
+    border-top: 1px solid #dcdcdc;
+    margin: 4px 0;
+    width: 100%;
+}
+
+/* ==========================================================================
+   MODAL FLOTANTE / PANTALLA CENTRADA PARA INFORMACIÓN DE BLOGS
+   ========================================================================== */
+.blog-modal-overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px); /* Blur de fondo */
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.blog-modal-overlay.active {
+    display: flex;
+    animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.blog-modal-overlay.fade-out {
+    animation: modalFadeOut 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.blog-modal-card {
+    position: relative;
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 580px;
+    max-height: 85vh;
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+    overflow-y: auto;
+    padding: 28px 24px 24px 24px;
+    box-sizing: border-box;
+    border: 1px solid #e2e8f0;
+}
+
+/* Botón de cierre (Tachesito X) */
+.blog-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: #f1f5f9;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #64748b;
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.blog-modal-close:hover {
+    background-color: #ff3b30;
+    color: #ffffff;
+    transform: scale(1.08);
+}
+
+/* Estilos internos para el contenido inyectado por JS */
+.blog-modal-body h2 {
+    margin-top: 0;
+    color: #1e293b;
+    font-size: 1.4rem;
+}
+
+.blog-modal-body img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 12px 0 16px 0;
+}
+
+.blog-modal-body p {
+    color: #475569;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Animaciones del Modal */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes modalFadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+}
+
+/* ==========================================================================
+   AJUSTE ADAPTABLE PARA PANTALLAS PEQUEÑAS (MÓVILES)
+   ========================================================================== */
+@media (max-width: 576px) {
+    .blogs-section-title {
+        margin: 36px 0 16px 0;
+        font-size: 1.5rem;
+    }
+
+    .blog-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .blog-img-wrapper {
+        width: 100%;
+        height: 150px;
+    }
+
+    .blog-action {
+        width: 100%;
+        text-align: right;
+    }
+
+    .blog-modal-card {
+        padding: 20px 16px 16px 16px;
+        max-height: 90vh;
+    }
+}

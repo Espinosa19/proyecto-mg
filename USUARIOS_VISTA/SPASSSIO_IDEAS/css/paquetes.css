@@ -1,0 +1,481 @@
+/* ==========================================
+   CONFIGURACIÓN GENERAL Y RESETEO (Fondo Azul)
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #005f6b; /* Fondo general azul solicitado */
+  color: #2b2d42;
+}
+
+/* Header Principal (Barra Superior Blanca) */
+.header-principal {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff; /* Barra superior blanca solicitada */
+  color: #005f6b;
+  padding: 16px 20px 14px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.header-superior {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  min-height: 60px;
+}
+
+/* Botón Regresar */
+.btn-atras {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f1f5f6;
+  color: #005f6b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.2s;
+}
+
+.btn-atras:hover {
+  background-color: #e2e8ea;
+}
+
+/* Cuadro Blanco para el Logo */
+.contenedor-logo {
+  position: absolute;
+  left: 68px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f8fafb;
+  border-radius: 14px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.img-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(1.18);
+  transition: transform 0.2s ease;
+}
+
+.icono-flecha {
+  width: 24px;
+  height: 24px;
+}
+
+.titulo-header {
+  font-size: 26px;
+  font-weight: bold;
+  color: #005f6b;
+  margin: 0;
+}
+
+.nav-secciones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav-link {
+  color: #557078;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 6px;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #005f6b;
+}
+
+.nav-link.active {
+  color: #005f6b;
+  font-weight: bold;
+  border-bottom: 3px solid #005f6b;
+}
+
+/* Contenedor y Secciones */
+.contenedor-principal {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 20px 16px 40px 16px;
+}
+
+.seccion-paquete {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 80px;
+  scroll-margin-top: 130px;
+}
+
+.titulo-seccion {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 16px;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Grillas */
+.grid-tarjetas {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.grid-tarjetas-unica {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.columna-tarjeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Tarjetas Blancas */
+.tarjeta {
+  background-color: #ffffff;
+  border-radius: 14px;
+  width: 235px;
+  height: 275px;
+  padding: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #d1e2e5;
+}
+
+.tarjeta-central {
+  width: 255px;
+  height: 325px;
+  padding: 0 12px 12px 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tag-popular-pegado {
+  background-color: #1b77e0;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 7px 0;
+  width: calc(100% + 24px);
+  margin-left: -12px;
+  margin-right: -12px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.tarjeta-empresarial {
+  width: 320px;
+  height: 275px;
+}
+
+.titulo-tarjeta {
+  color: #005f6b;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
+/* Textos secundarios de la tarjeta (Total y Equivalente a) en gris fuerte */
+.precio-tarjeta-secundario {
+  color: #4a5568; 
+  font-size: 15px; 
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.tarjeta p:not(.lista-beneficios li), 
+.tarjeta-central p, 
+.tarjeta-empresarial p {
+  color: #4a5568; 
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.precio-principal, 
+.tarjeta .precio-grande {
+  color: #2b2d42;
+  font-size: 26px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.tarjeta-central .titulo-tarjeta {
+  font-size: 24px;
+}
+
+.caja-blanca {
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  padding: 10px;
+  flex-grow: 1;
+  overflow-y: auto;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.lista-beneficios {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.lista-beneficios li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #2b2d42;
+  line-height: 1.2;
+}
+
+.lista-beneficios li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #6bb239;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.btn-tarjeta {
+  border: none;
+  color: #5f5d5d;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 9px 0;
+  width: 150px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(254, 254, 254, 0.15);
+  transition: transform 0.1s ease, filter 0.2s ease;
+}
+
+/* =========================================================
+   PROPIEDAD PARA SEPARAR EL COLOR DE LAS LETRAS DEL BOTÓN 
+   DE LA TARJETA DEL CENTRO 
+   ========================================================= */
+.columna-tarjeta:has(.tarjeta-central) .btn-tarjeta {
+  color: #fffefe; /* Cambia este color solo para el texto del botón del centro */
+}
+
+.btn-tarjeta:hover {
+  filter: brightness(1.08);
+}
+
+.btn-tarjeta:active {
+  transform: scale(0.98);
+}
+
+.btn-verde {
+  background-color: #f9f9f9;
+}
+
+.btn-naranja {
+  background-color: #3173e4;
+}
+
+/* Botón Flotante de WhatsApp */
+.btn-whatsapp-flotante {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-whatsapp-flotante img {
+  width: 32px;
+  height: 32px;
+}
+
+.btn-whatsapp-flotante:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Adaptación Mobile */
+@media (max-width: 800px) {
+  .seccion-paquete {
+    min-height: auto;
+    margin-bottom: 40px;
+  }
+
+  .grid-tarjetas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tarjeta,
+  .tarjeta-central,
+  .tarjeta-empresarial {
+    width: 280px;
+    height: auto;
+    min-height: 320px;
+  }
+}
+
+/* Tabla Comparativa */
+.seccion-comparativa {
+  margin-top: 60px;
+  padding: 40px 20px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid #d2e4e6;
+}
+
+.titulo-tabla-comparativa {
+  text-align: center;
+  font-size: 26px;
+  color: #005f6b;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.contenedor-tabla {
+  overflow-x: auto;
+}
+
+.tabla-beneficios {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tabla-beneficios th, .tabla-beneficios td {
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid #e1edf0;
+}
+
+.tabla-beneficios th {
+  background-color: #005f6b;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.tabla-beneficios th:first-child, .tabla-beneficios td:first-child {
+  text-align: left;
+  width: 45%;
+  color: #2b2d42;
+  font-weight: 600;
+}
+
+.tabla-beneficios tr:hover {
+  background-color: #f2f8f8;
+}
+
+.check-tabla {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cruz-tabla {
+  color: #b0c4c7;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.subtitulo-precio {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #686868 !important;
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.etiqueta-equivalente {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: rgba(90, 90, 90, 0.95) !important;
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.precio-tarjeta {
+  font-size: 26px !important;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 8px !important;
+}
+
+.texto-al-mes {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.tarjeta-central .precio-tarjeta {
+  font-size: 28px !important;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrición</title>
+    <!-- FontAwesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Enlace a tus estilos -->
+    <link rel="stylesheet" href="css/nutricion.css">
+</head>
+<body>
+
+    <!-- Wrapper principal -->
+    <div class="perfil-main-wrapper">
+        
+        <!-- Contenedor que divide la pantalla en dos columnas -->
+        <div class="layout-dos-columnas">
+
+            <!-- Columna Izquierda -->
+            <div class="columna-izquierda">
+                <h3 class="perfil-seccion-titulo">Plan nutricional</h3>
+
+                <div class="contenedor-superior-centrado">
+                    <h2 class="seccion-titulo-nutricion">
+                        <i class="fas fa-utensils"></i> Nutrición
+                    </h2>
+                    <p class="seccion-descripcion">
+                        Gestiona tu plan alimentario y alcanza tus objetivos.
+                    </p>
+                </div>
+
+                <h3 class="perfil-seccion-titulo">Seguimiento de comidas</h3>
+
+                <div class="contenedor-comidas-tabla" style="background-image: url('RUTA_DE_TU_IMAGEN.jpg');">
+                    <table class="tabla-nutricion">
+                        <thead>
+                            <tr>
+                                <th>Comida</th>
+                                <th>Ingredientes</th>
+                                <th>Calorías</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Desayuno</td>
+                                <td>Avena, plátano, miel</td>
+                                <td>350 kcal</td>
+                            </tr>
+                            <tr>
+                                <td>Almuerzo</td>
+                                <td>Pollo, arroz, brócoli</td>
+                                <td>550 kcal</td>
+                            </tr>
+                            <tr>
+                                <td>Cena</td>
+                                <td>Salmón, aguacate</td>
+                                <td>400 kcal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="perfil-seccion-titulo">Recetas recomendadas para ti</h3>
+
+                <div class="carrusel-recetas">
+                    <div class="card-receta">
+                        <h4>Batido Verde</h4>
+                        <p><i class="far fa-clock"></i> 5 min</p>
+                        <p><i class="fas fa-fire"></i> 150 kcal</p>
+                    </div>
+                    <div class="card-receta">
+                        <h4>Bowl de Quinoa</h4>
+                        <p><i class="far fa-clock"></i> 15 min</p>
+                        <p><i class="fas fa-fire"></i> 320 kcal</p>
+                    </div>
+                    <div class="card-receta">
+                        <h4>Tostadas de Aguacate</h4>
+                        <p><i class="far fa-clock"></i> 10 min</p>
+                        <p><i class="fas fa-fire"></i> 280 kcal</p>
+                    </div>
+                    <div class="card-receta">
+                        <h4>Ensalada César</h4>
+                        <p><i class="far fa-clock"></i> 12 min</p>
+                        <p><i class="fas fa-fire"></i> 250 kcal</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Derecha -->
+            <div class="columna-derecha">
+                <!-- Título fuera del contenedor -->
+                <h3 class="perfil-seccion-titulo">Registro Mensual</h3>
+
+                <div class="contenedor-extra">
+                    <p class="descripcion-extra">Marca los días que cumpliste tu meta:</p>
+                    
+                    <!-- Contenedor del calendario mensual -->
+                    <div class="grid-mes">
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">1</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">2</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">3</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">4</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">5</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">6</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">7</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">8</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">9</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">10</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">11</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">12</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">13</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">14</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">15</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">16</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">17</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">18</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">19</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">20</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">21</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">22</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">23</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">24</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">25</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">26</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">27</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">28</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">29</div>
+                        <div class="dia-circulo" onclick="this.classList.toggle('activo')">30</div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- Fin layout-dos-columnas -->
+    </div> <!-- Fin perfil-main-wrapper -->
+
+</body>
+</html>

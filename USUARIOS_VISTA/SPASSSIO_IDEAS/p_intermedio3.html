@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P INTERMEDIO 03</title>
+
+<link rel="stylesheet" href="css/p_intermedio03.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+<style>
+    /* Ajustes específicos para el timer e icono de fallback */
+    .progress-ring-container {
+        position: relative;
+        width: 90px;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 6px;
+    }
+    .progress-ring {
+        transform: rotate(-90deg);
+    }
+    .ring-bg {
+        fill: transparent;
+        stroke: #e0e0e0;
+        stroke-width: 6;
+    }
+    .ring-progress {
+        fill: transparent;
+        stroke: #4aafeb;
+        stroke-width: 6;
+        stroke-linecap: round;
+        stroke-dasharray: 226.195; 
+        stroke-dashoffset: 0; 
+        transition: stroke-dashoffset 0.3s linear;
+    }
+    .timer-text {
+        position: absolute;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .timer-numero-grande {
+        font-size: 72px;
+        font-weight: 800;
+        color: #1d2a3a;
+        line-height: 1;
+        margin: 0;
+    }
+    .timer-right {
+        width: 120px;
+        height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .img-ejercicio-anim {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        transition: opacity 0.3s ease;
+    }
+    .fallback-icon {
+        font-size: 3.5rem;
+        color: #4aafeb;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+    <!-- Hero Box -->
+    <div class="hero-box">
+        <div class="hero-header">
+            <!-- Botón con el ícono exacto a la primera imagen -->
+            <a href="rutinas.html" class="btn-regresar">
+                <i class="fa-solid fa-right-from-bracket"></i> Regresar
+            </a>
+            <span class="badge-nivel"><i class="fa-solid fa-fire"></i> Nivel Intermedio</span>
+        </div>
+
+        <h1 class="hero-titulo">P INTERMEDIO 03</h1>
+
+        <!-- Cita e instrucciones -->
+        <blockquote class="quote-box">
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p class="frase-cita">“DA SIEMPRE LO MEJOR DE TI. LO QUE SIEMBRES HOY DARÁ SU FRUTO MAÑANA”</p>
+            <cite>— OG MANDINO</cite>
+            
+            <div class="texto-instrucciones">
+                <p>En esta rutina vamos a incluir ejercicios de tono muscular que tratarás de realizar a un ritmo constante, pero si en algún momento se cansa tu músculo a trabajar <strong>¡NO TE DETENGAS!</strong></p>
+                <p>Cambia en ese momento por algún ejercicio que ya has realizado anteriormente y lo vuelves a hacer cuando ya descanse el músculo. Recuerda que los ejercicios de calentamiento y relajación serán los mismos.</p>
+            </div>
+        </blockquote>
+
+        <!-- Alerta de seguridad -->
+        <div class="alerta-seguridad">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <div>
+                <strong>SI TE SIENTES MAL EN EL EJERCICIO SUSPENDE HASTA SABER SU ORIGEN O SI ALGÚN EJERCICIO TE LASTIMA O INCOMODA REPORTALO DIRECTAMENTE CON TU ENTRENADOR PARA CAMBIAR ESE EJERCICIO.</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAQUETACIÓN EN 2 COLUMNAS (EJERCICIOS Y DETALLES) -->
+    <div class="grid-ejercicios">
+        
+        <!-- Columna Izquierda: Mis Ejercicios -->
+        <div class="lista">
+            <h3 class="titulo-seccion">Ejercicios</h3>
+            <button onclick="verEjercicio(0)">P I 3.1 Trote en su lugar con pequeños sprints escalonados</button>
+            <button onclick="verEjercicio(1)">P I 3.2 subir y bajar brazos al piso con brinco piernas abiertas</button>
+            <button onclick="verEjercicio(2)">P I 3.3 Desplantes en piso y dorsales</button>
+            <button onclick="verEjercicio(3)">P I 3.4 Tocar talones adelante y atrás</button>
+            <button onclick="verEjercicio(4)">P I 3.5 Abrir cerrar piernas y brazos con brinco y cruzar piernas</button>
+        </div>
+
+        <!-- Columna Derecha: Tarjeta de Detalles (Grid 2x2) -->
+        <div class="tarjeta-detalles">
+            <h3 class="titulo-seccion">Detalles</h3>
+            <div class="grid-detalles-2x2">
+                <button class="btn-detalle" onclick="abrirVideo('tutorial')">Tutorial</button>
+                <button class="btn-detalle" onclick="abrirVideo('calentamiento')">Calentamiento</button>
+                <button class="btn-detalle" onclick="abrirVideo('intensidad')">Intensidad</button>
+                <button class="btn-detalle" onclick="abrirVideo('relajacion')">Relajación</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- TEMPORIZADOR CON RUEDA Y ANIMACIÓN -->
+<div class="timer-box">
+    <div class="timer-header">
+        <h2>Calentamiento</h2>
+    </div>
+
+    <div class="timer-body">
+        <!-- Tiempo Total + Anillo -->
+        <div class="timer-left">
+            <span class="label-total">Tiempo total:</span>
+            <div class="progress-ring-container">
+                <svg class="progress-ring" width="90" height="90">
+                    <circle class="ring-bg" cx="45" cy="45" r="36" />
+                    <circle class="ring-progress" id="ringProgress" cx="45" cy="45" r="36" />
+                </svg>
+                <div class="timer-text">
+                    <span class="cronometro" id="tiempo-total">00:00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timer Central Grande -->
+        <div class="timer-center">
+            <div id="timer" class="timer-numero-grande">60</div>
+            <span class="seg-label">Seg</span>
+        </div>
+
+        <!-- Ilustración / GIF de Ejercicio -->
+        <div class="timer-right" id="contenedor-img-timer">
+            <img id="img-ejercicio" 
+                 src="img/ejercicios/trote_sprints.gif" 
+                 alt="Ejercicio actual" 
+                 class="img-ejercicio-anim"
+                 onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-person-running fa-bounce fallback-icon\'></i>';">
+        </div>
+    </div>
+
+    <div class="timer-footer">
+        <div class="ejercicio-actual">
+            <h3 id="ejercicio">P I 3.1 Trote en su lugar con pequeños sprints escalonados</h3>
+        </div>
+        <div class="controles">
+            <button id="btn-iniciar-pausar" onclick="alternarIniciarPausar()">Iniciar</button>
+            <button onclick="reiniciar()">Reiniciar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modales -->
+<div id="modalEjercicio" class="modal">
+    <div class="modal-content">
+        <span class="cerrar" onclick="cerrar('modalEjercicio')">X</span>
+        <h2 id="titulo"></h2>
+        <p id="desc"></p>
+        <img id="gif" src="" alt="Demostración del ejercicio">
+    </div>
+</div>
+
+<div id="modalVideo" class="modal">
+    <div class="modal-content">
+        <span class="cerrar" onclick="cerrar('modalVideo')">X</span>
+        <video id="video" controls></video>
+    </div>
+</div>
+
+<div id="modal1" class="modal-full">
+    <div class="modal-box">
+        <div class="icono">i</div>
+        <h2>Antes de empezar</h2>
+        <p>Bienvenido a tu rutina 🔥<br><br>En esta rutina trabajaremos tono muscular. Recuerda mantener un ritmo constante...</p>
+        <button onclick="siguienteModal()">Continuar</button>
+    </div>
+</div>
+
+<div id="modal2" class="modal-full">
+    <div class="modal-box">
+        <div class="icono">!</div>
+        <h2>Precaución</h2>
+        <p>En caso de malestar durante el ejercicio, suspende hasta saber su origen...</p>
+        <button onclick="cerrarModales()">Empezar</button>
+    </div>
+</div>
+
+<script src="js/p_intermedio03.js"></script>
+
+<!-- REPRODUCTORES DE MÚSICA -->
+<div class="musica-container">
+    <div class="glass-player">
+        <h3>🎧 Reproductor de Música de Spotify</h3>
+        <iframe src="https://open.spotify.com/embed/playlist/1E6D5TSJt4EcNWYCClGVB4?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div class="glass-player">
+        <h3>🎧 Reproductor de Música de SoundCloud</h3>
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/victor-zarraga-414151089/rutina-ejercicio&color=%23000000&auto_play=false&hide_related=false&show_comments=false&show_reposts=false&visual=true"></iframe>
+    </div>
+</div>
+
+<!-- Chatbot -->
+<div id="chatbot">
+    <div id="chat-btn" onclick="toggleChat()"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="Chatbot Icon"></div>
+    <div id="chat-box">
+        <div class="chat-header"><span>Spasssio Chat</span><button onclick="toggleChat()">✖</button></div>
+        <div id="chat-content"></div>
+        <div id="chat-options"></div>
+        <div id="typing">🤖 Escribiendo...</div>
+        <input type="text" id="chat-input" placeholder="Escribe..." onkeypress="enviar(event)">
+    </div>
+</div>
+
+<link rel="stylesheet" href="css/chatbot.css">
+<script src="js/chatbot.js"></script>
+
+</body>
+</html>

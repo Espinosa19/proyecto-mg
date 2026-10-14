@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPASSSIO | Alimentación</title>
+
+<link rel="stylesheet" href="css/recomendacion.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<div class="topbar">
+<div class="logo">
+    <img src="img/logo.png" alt="Logo">
+  </div>
+</div>
+
+<div class="sidebar">
+
+    <a href="home.html">
+        <div class="menu-item">
+            <i class="fas fa-house"></i>
+            <span>HOME</span>
+        </div>
+    </a>
+
+    <a href="progreso.html">
+        <div class="menu-item">
+            <i class="fas fa-chart-line"></i>
+            <span>MI PROGRESO</span>
+        </div>
+    </a>
+
+    <a href="top.html">
+        <div class="menu-item">
+            <i class="fas fa-trophy"></i>
+            <span>TOP GANADORES</span>
+        </div>
+    </a>
+
+    <a href="ajustes.html">
+        <div class="menu-item">
+            <i class="fas fa-gear"></i>
+            <span>AJUSTES</span>
+        </div>
+    </a>
+
+    <a href="panel.html#blogs">
+    <div class="menu-item">
+        <i class="fas fa-blog"></i>
+        <span>BLOGS</span>
+    </div>
+</a>
+
+</div>
+
+<div class="contenido">
+
+<div class="card-recomendacion">
+
+<div class="imagen"></div>
+
+<h1>Recomendación Nutricional</h1>
+
+
+<p class="texto">
+Te proporcionaremos recomendaciones nutricionales personalizadas para ayudarte a alcanzar tus objetivos de salud sin restringir alimentos. Es esencial querer cambiar nuestros malos hábitos. Evita prácticas perjudiciales como provocar vómitos, seguir dietas sin supervisión médica o utilizar productos dudosos en tu rutina de ejercicio.
+</p>
+
+
+<p class="vacio">No hay recomendaciones nutricionales disponibles.</p>
+
+
+<a href="home.html">
+<button class="btn-regresar">Regresar</button>
+</a>
+
+</div>
+
+</div>
+
+<script src="js/recomendacion.js"></script>
+
+
+<!-- ===== CHATBOT SPASSSIO ===== -->
+<div id="chatbot">
+
+
+    <div id="chat-btn" onclick="toggleChat()">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png">
+    </div>
+
+    <div id="chat-box">
+
+        <div class="chat-header">
+            <span>Spasssio Chat</span>
+            <button onclick="toggleChat()">✖</button>
+        </div>
+
+        <div id="chat-content"></div>
+
+        <div id="chat-options"></div>
+
+        <div id="typing">🤖 Escribiendo...</div>
+
+        <input type="text" id="chat-input" placeholder="Escribe..." onkeypress="enviar(event)">
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="css/chatbot.css">
+<script src="js/chatbot.js"></script>
+</body>
+</html>

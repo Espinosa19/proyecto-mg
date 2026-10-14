@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="css/user-profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NUEVO: Contenedor añadido para centrar el contenido al inyectarlo en la SPA -->
+    <div class="spa-container">
+        
+        <div class="perfil-container">
+            
+            <div class="tarjeta-cabecera">
+                <div class="foto-wrapper">
+                    <img src="ruta-a-tu-imagen.jpg" 
+                         onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Rogelio&background=random&size=128';" 
+                         class="foto-perfil" alt="Foto de perfil">
+                    
+                    <button class="btn-editar-foto">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </div>
+                <div class="info-basica">
+                    <h2 class="nombre-usuario">Usuario</h2>
+                    <p class="rol-usuario">Miembro Pro</p>
+                </div>
+            </div>
+
+            <div class="tarjeta-informacion">
+                <h3 class="titulo-seccion">Información del Usuario</h3>
+                <div class="lista-datos">
+                    <div class="dato-item"><span class="etiqueta">Nombre:</span><span class="valor">Usuario</span></div>
+                    <div class="dato-item"><span class="etiqueta">Apellidos:</span><span class="valor">Tus Apellidos</span></div>
+                    <div class="dato-item"><span class="etiqueta">Correo:</span><span class="valor">correo@ejemplo.com</span></div>
+                    <div class="dato-item"><span class="etiqueta">Teléfono:</span><span class="valor">+52 55 1234 5678</span></div>
+                    <div class="dato-item"><span class="etiqueta">Edad:</span><span class="valor">25 años</span></div>
+                    <div class="dato-item"><span class="etiqueta">Sexo:</span><span class="valor">Masculino</span></div>
+                </div>
+            </div>
+
+            <div class="acciones-container">
+                <button class="btn-accion" onclick="toggleSection('datos-form')">Actualizar Datos</button>
+                <button class="btn-accion" onclick="toggleSection('password-form')">Cambiar Contraseña</button>
+            </div>
+
+            <div id="logout-container" class="cerrar-sesion-container">
+                <a href="index.html" class="btn-logout">Cerrar Sesión</a>
+            </div>
+
+            <div id="datos-form" class="tarjeta-accion hidden">
+                <h3>Actualizar Información</h3>
+                <input type="text" placeholder="Nombre">
+                <input type="text" placeholder="Apellidos">
+                <input type="tel" placeholder="Teléfono">
+                <input type="tel" placeholder="Correo">
+                <input type="number" placeholder="Edad">
+                <button class="btn-confirmar" onclick="toggleSection('datos-form')">Confirmar</button>
+                <button class="btn-cancelar" onclick="toggleSection('datos-form')">Cancelar</button>
+            </div>
+
+            <div id="password-form" class="tarjeta-accion hidden">
+                <h3>Cambiar Contraseña</h3>
+                <input type="password" placeholder="Nueva contraseña">
+                <input type="password" placeholder="Confirmar nueva contraseña">
+                <button class="btn-confirmar" onclick="toggleSection('password-form')">Confirmar</button>
+                <button class="btn-cancelar" onclick="toggleSection('password-form')">Cancelar</button>
+            </div>
+
+        </div>
+
+    </div> <!-- FIN DEL spa-container -->
+
+    <script>
+        function toggleSection(id) {
+            const target = document.getElementById(id);
+            const logoutContainer = document.getElementById('logout-container');
+            const isHidden = target.classList.contains('hidden');
+
+            // Ocultamos todos los formularios
+            document.getElementById('datos-form').classList.add('hidden');
+            document.getElementById('password-form').classList.add('hidden');
+            
+            // Lógica para mostrar/ocultar formulario y botón de logout
+            if (isHidden) {
+                target.classList.remove('hidden');
+                logoutContainer.style.display = 'none'; // Oculta logout al abrir formulario
+            } else {
+                target.classList.add('hidden');
+                logoutContainer.style.display = 'block'; // Muestra logout al cerrar formulario
+            }
+        }
+    </script>
+
+</body>
+</html>

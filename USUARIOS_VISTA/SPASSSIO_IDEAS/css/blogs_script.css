@@ -1,0 +1,142 @@
+/* ==========================================
+   VARIABLES Y REGLAS GENERALES
+   ========================================== */
+:root {
+  --azul: #1679a3;
+  --azul-oscuro: #164f7a;
+  --gris-fondo: #f9f9f9;
+  --gris-borde: #e0e0e0;
+  --texto-oscuro: #333333;
+  --texto-suave: #666666;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #ffffff; /* Fondo blanco */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative; /* Asegura el posicionamiento de la barra superior */
+}
+
+/* ==========================================
+   BARRA DE NAVEGACIÓN SUPERIOR
+   ========================================== */
+.top-nav {
+  position: absolute; /* Se fija en las esquinas superiores */
+  top: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Empuja un botón a la izquierda y otro a la derecha */
+  padding: 0 30px;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.btn-nav {
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none; /* Quita el subrayado si es un enlace <a> */
+  transition: all 0.3s ease;
+}
+
+/* Botón Salida / Regresar */
+.btn-exit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Espacio entre el cochecito/tache y la palabra Regresar */
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: var(--texto-oscuro);
+  font-size: 0.95rem;
+  border-radius: 8px;
+}
+
+.btn-exit:hover {
+  background: #e0e0e0;
+}
+
+/* Botón Más blogs */
+.btn-more {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--azul);
+  color: #ffffff;
+  font-size: 0.95rem;
+  border-radius: 8px;
+}
+
+.btn-more:hover {
+  background: var(--azul-oscuro);
+  transform: scale(1.05);
+}
+
+/* ==========================================
+   CONTENEDOR PADRE (FILA)
+   ========================================== */
+.fila-contenedores {
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* Espacio uniforme entre los 4 elementos */
+  width: 100%;
+  max-width: 1200px; /* Ancho máximo contenedor general */
+  justify-content: center;
+  margin-top: 60px; /* Evita que la barra superior tape el contenido */
+}
+
+/* ==========================================
+   TARJETAS / CONTENEDORES INDIVIDUALES
+   ========================================== */
+.card {
+  flex: 1; /* Distribuye el espacio equitativamente */
+  background: var(--gris-fondo); /* Fondo gris tenue para sobresalir del fondo blanco */
+  border: 1px solid var(--gris-borde);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto Hover */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: var(--texto-oscuro);
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+  line-height: 1.5;
+}
+
+/* ==========================================
+   RESPONSIVE (Móviles)
+   ========================================== */
+@media (max-width: 768px) {
+  .top-nav {
+    padding: 0 15px;
+  }
+
+  .fila-contenedores {
+    flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    margin-top: 80px;
+  }
+}

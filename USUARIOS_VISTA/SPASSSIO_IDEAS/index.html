@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>SPASSSIO</title>
+
+<link rel="stylesheet" href="css/estilos.css">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/responsive.css">
+
+
+
+<nav>
+
+  <!-- LOGO -->
+  <div class="logo">
+    <img src="img/logo.png" alt="Logo">
+  </div>
+
+  <!-- MENÚ -->
+  <ul class="nav-menu-desktop">
+    <li><a href="#inicio">INICIO</a></li>
+    <li><a href="#servicios">SERVICIOS</a></li>
+    <li><a href="#paquetes">PAQUETES</a></li>
+    <li><a href="#tests">TEST'S</a></li>
+    <li><a href="#testimonios">TESTIMONIOS</a></li>
+    <li><a href="#beneficios">BENEFICIOS</a></li>
+    <li><a href="#blogs">BLOGS</a></li>
+    <li><a href="#nosotros">NOSOTROS</a></li>
+  </ul>
+
+
+
+  <!-- DERECHA 🔥 -->
+ <div class="nav-right">
+  <button class="tema-btn" onclick="toggleTema()">🎨</button>
+  <a href="inicio_sesion.html" class="login">INICIO DE SESIÓN</a>
+</div>
+
+</nav>
+<!-- OVERLAY -->
+<div class="nav-overlay" id="navOverlay">
+  <div class="nav-overlay__content">
+    <a href="#inicio"      class="nav-overlay__link" onclick="cerrarMenu()">Inicio</a>
+    <a href="#servicios"   class="nav-overlay__link" onclick="cerrarMenu()">Servicios</a>
+    <a href="#tests"       class="nav-overlay__link" onclick="cerrarMenu()">Test's</a>
+    <a href="#testimonios" class="nav-overlay__link" onclick="cerrarMenu()">Testimonios</a>
+    <a href="#beneficios"  class="nav-overlay__link" onclick="cerrarMenu()">Beneficios</a>
+    <a href="#paquetes"    class="nav-overlay__link" onclick="cerrarMenu()">Paquetes</a>
+    <a href="#blogs"       class="nav-overlay__link" onclick="cerrarMenu()">Blogs</a>
+    <a href="#nosotros"    class="nav-overlay__link" onclick="cerrarMenu()">Nosotros</a>
+    <a href="inicio_sesion.html"   class="nav-overlay__link nav-overlay__login" onclick="cerrarMenu()">Iniciar Sesión</a>
+  </div>
+</div>
+
+
+
+<section class="hero" id="inicio">
+  <div class="cinta"> 
+    <img src="img/im1.jpg">
+    <img src="img/im2.jpg">
+    <img src="img/im3.jpg">
+    <img src="img/im4.jpg">
+    <img src="img/im5.jpg">
+    <img src="img/im6.jpg">
+    <img src="img/im7.jpg">
+    <img src="img/im8.jpg">
+    <img src="img/im9.jpg">
+    <img src="img/im10.jpg">
+  </div> 
+
+  <div class="overlay"></div>
+
+  <div class="hero-text">
+    <div class="text-wrap">
+      <div class="line"></div>
+      <div class="content">
+        <h1>SPASSSIO</h1>
+        <p class="slogan">El mejor SPASSSIO para hacer ejercicio</p>
+        <a href="crear_cuenta.html" class="btn-principal">INSCRÍBETE AHORA</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="titulo">
+    <h2>Nuestros Servicios</h2>
+  </div>
+
+  <div class="servicios">
+
+    <div class="servicio">
+      <img src="img/personalizacion.png" alt="Personalización">
+      <h3>Personalización</h3>
+      <p>Programas adaptados a tus objetivos.</p>
+    </div>
+
+    <div class="servicio">
+      <img src="img/atencion.png" alt="Atención">
+      <h3>Atención</h3>
+      <p>Acompañamiento de nuestros expertos.</p>
+    </div>
+
+    <div class="servicio">
+      <img src="img/valoracion.png" alt="Valoración Física">
+      <h3>Valoración Física</h3>
+      <p>Evaluamos tu condición actual.</p>
+    </div>
+
+    <div class="servicio">
+      <img src="img/comunidad.png" alt="Comunidad">
+      <h3>Comunidad</h3>
+      <p>Apoyo mutuo entre usuarios.</p>
+    </div>
+
+    <div class="servicio">
+      <img src="img/accesibilidad.png" alt="Accesibilidad">
+      <h3>Accesibilidad</h3>
+      <p>Rutinas desde cualquier lugar.</p>
+    </div>
+
+    <div class="servicio">
+      <img src="img/rutinas.png" alt="Rutinas">
+      <h3>Rutinas Dinámicas</h3>
+      <p>Seguimientos mensuales personalizados.</p>
+    </div>
+
+    <div class="servicio">
+      <img src="img/nutricion.png" alt="Nutrición">
+      <h3>Orientación Nutricional</h3>
+      <p>Consejos complementarios de alimentación.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+<section class="seccion paquetes" id="paquetes">
+  <div class="paquetes-overlay">
+    
+    <div class="paquetes-header">
+      <h2>PAQUETES</h2>
+      <p>Elige el plan que se adapte a ti</p>
+    </div>
+
+    <!-- Menú de Pestañas / Filtros -->
+    <div class="paquetes-grid">
+      <button class="paquete-btn active" onclick="abrirPaquete('basico', this)">Plan Básico</button>
+      <button class="paquete-btn" onclick="abrirPaquete('premium', this)">Plan Premium</button>
+      <button class="paquete-btn" onclick="abrirPaquete('elite', this)">Plan Elite</button>
+      <button class="paquete-btn" onclick="abrirPaquete('empresarial', this)">Plan Empresarial</button>
+    </div>
+
+    <!-- Tarjeta Estática de Contenido -->
+    <div class="paquetes-tarjeta">
+
+      <!-- Plan Básico (Activo por defecto) -->
+      <div id="basico" class="paquete-info active">
+        <div>
+          <img src="img/principiante.jpeg" alt="Plan Básico" class="paquete-img">
+          <h3>Plan Básico</h3>
+          <ul>
+            <li>Encuesta inicial de salud (opcional)</li>
+            <li>Programa personalizado de ejercicio cardiovascular</li>
+            <li>Cambio de rutina mensual</li>
+            <li>Orientación nutricional</li>
+            <li>Acceso a pláticas/conferencias sobre temas de salud y testimoniales</li>
+          </ul>
+        </div>
+        <a href="paquetes_.html" class="btn-solicitar">Solicitar</a>
+      </div>
+
+      <!-- Plan Premium -->
+      <div id="premium" class="paquete-info">
+        <div>
+          <img src="img/premuim.jpeg" alt="Plan Premium" class="paquete-img">
+          <h3>Plan Premium</h3>
+          <ul>
+            <li>Encuesta inicial de salud (opcional)</li>
+            <li>Programa personalizado de ejercicio cardiovascular</li>
+            <li>Cambio de rutina mensual</li>
+            <li>Orientación nutricional</li>
+            <li>Acceso a pláticas/conferencias sobre temas de salud y testimoniales</li>
+             <li>Programa de tono muscular o especial (para acelerar resultados)</li>
+              <li>Requerimiento calórico personalizado</li>
+               <li>Acceso a clases grupales calendarizadas</li>
+          </ul>
+        </div>
+        <a href="paquetes_.html" class="btn-solicitar">Solicitar</a>
+      </div>
+
+      <!-- Plan Elite -->
+      <div id="elite" class="paquete-info">
+        <div>
+          <img src="img/elite.jpeg" alt="Plan Elite" class="paquete-img">
+          <h3>Plan Elite</h3>
+          <ul>
+            <li>Encuesta inicial de salud (opcional)</li>
+            <li>Programa personalizado de ejercicio cardiovascular</li>
+            <li>Cambio de rutina mensual</li>
+            <li>Orientación nutricional</li>
+            <li>Acceso a pláticas/conferencias sobre temas de salud y testimoniales</li>
+              <li>Programa de tono muscular o especial (para acelerar resultados)</li>
+                  <li>Requerimiento calórico personalizado</li>
+                     <li>Acceso a clases grupales calendarizadas</li>
+                      <li>Acceso a todos los servicios de programas (cardio, tono muscular y especial) Este ultimo para apoyarte al 100%ven tus objetivos específicos (rehabilitación, baile, tonificación, competicioes, etc)</li>
+                        <li>Acceso a webinars exclusivos</li>
+          </ul>
+        </div>
+        <a href="paquetes_.html" class="btn-solicitar">Solicitar</a>
+      </div>
+
+      <!-- Plan Empresarial -->
+      <div id="empresarial" class="paquete-info">
+        <div>
+          <img src="img/empresarial.png" alt="Plan Empresarial" class="paquete-img">
+          <h3>Plan Empresarial</h3>
+          <ul>
+            <li>Incribe a tu empresa completa con la facturación centralizada</li>
+            <li>Elige el plan más adecuado para cada uno de los elementos que controlan tu empresa</li>
+               <li>Incentivos a realizar ejercicio y mejora la cultura de salud en tu organización</li>
+                  <li>Tarifas preferenciales exclusivas por volumen de inscritos</li>
+                     <li>Clases y talleres exclusivos de bienestar y manejo de estrés para el equipo</li>
+                        <li>Reporte trimestral de participación para ayudar el impacto del programa</li>
+                           <li>Mejora la productividad de tus empleados y reducir el absentismo laboral</li>
+          </ul>
+        </div>
+        <a href="crear_cuenta.html" class="btn-solicitar">Solicitar</a>
+        <a href="https://www.youtube.com/watch?v=8gCkLFUGmP8" class="btn-secundario-link">Ver video</a>
+      </div>
+
+      
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+<section class="seccion" id="tests">
+
+
+  <div class="tests-container">
+
+    <div class="tests-info">
+      <h2>TEST'S</h2>
+      <p>Evalúa tu condición física con pruebas simples y seguras.</p>
+
+      <div class="tests-buttons">
+        <button onclick="abrirTest('resistencia')">Test de Resistencia</button>
+        <button onclick="abrirTest('flexibilidad')">Test de Flexibilidad</button>
+        <button onclick="abrirTest('fuerza')">Test de Fuerza</button>
+        <button onclick="abrirTest('equilibrio')">Test de Equilibrio</button>
+      </div>
+    </div>
+
+    <div class="tests-img">
+      <span><img src="img/test.jpg"> </span>
+    </div>
+
+  </div>
+</section>
+
+<section class="seccion" id="testimonios">
+
+
+
+  <div class="testimonios-header">
+    <h2>TESTIMONIOS</h2>
+    <p>Personas reales, resultados reales</p>
+  </div>
+
+  <div class="carousel"> 
+
+  <button class="carousel-btn left" onclick="moverCarrusel(-1)">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+
+  <div class="carousel-track" id="carouselTrack">
+
+   <div class="video-card">
+  <video src="img/resultado1.mp4" controls></video>
+</div>
+
+<div class="video-card">
+  <video src="img/resultado2.mp4" controls></video>
+</div>
+
+<div class="video-card">
+  <video src="img/resultado3.mp4" controls></video>
+</div>
+  </div>
+
+  <button class="carousel-btn right" onclick="moverCarrusel(1)">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+
+</div>
+
+</section>
+
+<section class="seccion beneficios" id="beneficios">
+
+  <div class="beneficios-overlay">
+
+    <div class="beneficios-header">
+      <h2>BENEFICIOS</h2>
+      <p>Entrenar nunca fue tan sencillo</p>
+    </div>
+
+    <div class="beneficios-grid">
+
+      <div class="beneficio-card">
+        <h3>Efectivo, breve, fácil y accesible</h3>
+        <p>Entrenamientos diseñados para maximizar resultados sin complicaciones.</p>
+      </div>
+
+      <div class="beneficio-card">
+        <h3>Rutinas elaboradas por expertos</h3>
+        <p>Planes creados por profesionales enfocados en tu bienestar.</p>
+      </div>
+
+      <div class="beneficio-card">
+        <h3>Adaptabilidad física y estilo de vida</h3>
+        <p>Ejercicios ajustados a tu condición y ritmo diario.</p>
+      </div>
+
+      <div class="beneficio-card">
+        <h3>Disponibilidad a cualquier hora</h3>
+        <p>Entrena desde casa cuando tú lo decidas.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="seccion blogs" id="blogs">
+
+  <div class="blogs-header">
+    <h2>BLOGS</h2>
+    <p>Infórmate y mejora tu estilo de vida</p>
+  </div>
+
+ <div class="blogs-grid">
+
+  <div class="blog-card" onclick="abrirBlog('empresarial')">
+    <img src="img/empresarial.jpg">
+    <h3>Empresarial</h3>
+    <p>
+La actividad física en la empresa: un impulso integral para el éxito corporativo En el entorno laboral actual, las empresas buscan constantemente f...</p>
+  </div>
+
+  <div class="blog-card" onclick="abrirBlog('salud')">
+    <img src="img/im2.jpg">
+    <h3>Salud</h3>
+  <ul>
+    <li>Obesidad.</li>
+    <li>La importancia de los habitos saludables.</li>
+    <li>Perdida de peso.</li>
+    <li>Comida chatarra.</li>
+  </ul>
+ </div>
+
+  <div class="blog-card" onclick="abrirBlog('ejercicio')">
+    <img src="img/ejercicio.jpg">
+    <h3>Ejercicio</h3>
+    <p>Más que un Pasatiempo: El Ejercicio Como Pilar de un Envejecimiento Vibrante Con el paso de los años, es común que la vida se vuelva más sedentaria....</p>
+  </div>
+
+  <div class="blog-card" onclick="abrirBlog('General')">
+    <img src="img/im4.jpg">
+    <h3>General</h3>
+    <p> ¿Que es el IMC?</p>
+    <p> PERDER PESO</p>
+  </div>
+
+</div>
+
+
+
+<div class="modal" id="modal-blog">
+  <div class="modal-contenido blog-modal">
+   
+    <div id="contenido-blog"></div>
+  </div>
+</div>
+</section>
+
+
+<section class="seccion nosotros" id="nosotros">
+
+  <div class="nosotros-overlay">
+
+    <div class="nosotros-header">
+      <h2>Sobre Nosotros</h2>
+      <p>Entrenamiento con propósito, ciencia y compromiso</p>
+    </div>
+
+    <div class="nosotros-grid">
+
+      <div class="nosotros-card">
+        <h3>Misión</h3>
+        <p>
+          Ofrecer un sistema de entrenamiento personalizado para mejorar tu calidad de vida.
+        </p>
+      </div>
+
+      <div class="nosotros-card">
+        <h3>Visión</h3>
+        <p>
+          Ser la mejor opción en programas de acondicionamiento físico personalizado.
+        </p>
+      </div>
+
+      <div class="nosotros-card">
+        <h3>Compromiso</h3>
+        <p>
+          Desarrollamos programas con base científica para resultados reales.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<div class="modal" id="modal-subcard">
+  <div class="modal-contenido">
+    <span class="cerrar" onclick="cerrarSubcard()">&times;</span>
+    <div id="contenido-subcard"></div>
+  </div>
+</div>
+
+
+<div class="modal" id="modalTest">
+  <div class="modal-content">
+    <h3 id="tituloTest"></h3>
+    <p id="contenidoTest"></p>
+    <button onclick="cerrarTest()">Cerrar</button>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="cursor-azul"></div>
+
+<script src="js/script.js"></script>
+
+ <div class="redes">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        
+<!-- ===== CHATBOT SPASSSIO ===== -->
+<div id="chatbot">
+
+    <div id="chat-bubble">
+        ¿Tienes dudas? ¡Usa nuestro chatbot! 🤖
+    </div>
+
+    <div id="chat-btn" onclick="toggleChat()">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png">
+    </div>
+
+    <div id="chat-box">
+
+        <div class="chat-header">
+            <span>Spasssio Chat</span>
+            <button onclick="toggleChat()">✖</button>
+        </div>
+
+        <div id="chat-content"></div>
+
+        <div id="chat-options"></div>
+
+        <div id="typing">🤖 Escribiendo...</div>
+
+        <input type="text" id="chat-input" placeholder="Escribe..." onkeypress="enviar(event)">
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="css/chatbot.css">
+<script src="js/chatbot.js"></script>
+<script src="js/blogs.js"></script>
+<script src="js/paquetes.js"></script>
+
+<script>
+function toggleTema(){
+  document.body.classList.toggle("tema-color");
+}
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle  = document.getElementById('navToggle');
+    const overlay = document.getElementById('navOverlay');
+
+    if (!toggle || !overlay) return;
+
+    toggle.addEventListener('click', () => {
+      overlay.classList.contains('activo') ? cerrarMenu() : abrirMenu();
+    });
+
+    function abrirMenu() {
+      overlay.classList.add('activo');
+      toggle.classList.add('activo');
+      document.body.style.overflow = 'hidden';
+    }
+
+    window.cerrarMenu = function() {
+      overlay.classList.remove('activo');
+      toggle.classList.remove('activo');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') cerrarMenu();
+    });
+  });
+</script>
+</body>
+</html>

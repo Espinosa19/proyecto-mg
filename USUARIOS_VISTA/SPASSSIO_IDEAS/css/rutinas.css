@@ -1,0 +1,410 @@
+/* ==========================================================================
+   1. VARIABLES GLOBALES Y RESET
+   ========================================================================== */
+:root {
+    --primary-color: #0d6efd;
+    --primary-hover: #0b5ed7;
+    --turquesa-color: hsl(189, 98%, 38%);
+    --turquesa-hover: hsl(189, 98%, 30%);
+    --bg-main: #f4f6f8;
+    --card-bg: #ffffff;
+    --text-primary: #1c232b;
+    --text-secondary: #475569;
+    --border-color: #e2e8f0;
+    --border-radius: 20px;
+    --transition-speed: 0.25s;
+
+    /* Colores por Categoría */
+    --cardio-color: #ff4757;
+    --tono-color: #2ed573;
+    --especial-color: #ffa502;
+    --imc-color: #10b981;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    overflow-y: auto;
+}
+
+/* ==========================================================================
+   2. CONTENEDOR PRINCIPAL Y ENCABEZADO
+   ========================================================================== */
+.main-container {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 28px;
+    padding: 32px 40px 60px 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.btn-regresar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #9cb3be;
+    color: #1a252c;
+    padding: 10px 22px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    margin-bottom: 25px;
+}
+
+.btn-regresar:hover {
+    background-color: #89a2b0;
+    transform: translateX(-3px);
+}
+
+.header-content {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.titulo-principal {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.subtitulo-info {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   3. GRID DE TARJETAS Y RUTINAS (IMÁGENES DE FONDO CON SUPERPOSICIÓN)
+   ========================================================================== */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.card-rutina {
+    position: relative;
+    border-radius: var(--border-radius);
+    padding: 24px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empuja el contenido arriba y los botones/avisos al fondo */
+    min-height: 260px;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    
+    /* Configuración base para imágenes de fondo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card-rutina:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Imágenes y Capas de Color por Tarjeta --- */
+
+/* Tarjeta 1: Cardio */
+.card-cardio {
+    background-image: 
+        linear-gradient(135deg, rgba(240, 247, 255, 0.281) 0%, rgba(253, 227, 227, 0) 100%),
+        url('../img/correr2.png');
+    border: 1px solid #d0e3fc;
+}
+
+/* Tarjeta 2: Tono Muscular */
+.card-tono {
+    background-image: 
+        linear-gradient(135deg, rgba(240, 253, 249, 0.368) 0%, rgba(226, 251, 232, 0) 100%),
+        url('../img/fuerza.png');
+    border: 1px solid #ccefe3;
+}
+
+/* Tarjeta 3: Especial */
+.card-especial {
+    background-image: 
+        linear-gradient(135deg, rgba(255, 245, 245, 0.29) 0%, rgba(247, 246, 246, 0) 100%),
+        url('../img/corrr.jpeg');
+    border: 1px solid #f7fbd5;
+}
+
+/* Icono Semitransparente Posicionado al Fondo */
+.icon-bg {
+    position: absolute;
+    right: -15px;
+    bottom: -15px;
+    font-size: 110px;
+    color: rgba(0, 0, 0, 0.04);
+    z-index: 1;
+    pointer-events: none;
+    transition: transform var(--transition-speed) ease, opacity var(--transition-speed) ease;
+}
+
+.card-rutina:hover .icon-bg {
+    opacity: 0.1;
+    transform: scale(1.05) rotate(-5deg);
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+}
+
+.card-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.card-desc {
+    font-size: 0.92rem;
+    color: #475569;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.botones-rutina {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+    margin-top: auto; /* Ancla de forma automática los botones a la parte inferior */
+}
+
+/* Botones de subrutinas */
+.btn-subrutina {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--turquesa-color);
+    color: #ffffff;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    flex: 1;
+    min-width: 110px;
+}
+
+.btn-subrutina.full-w {
+    flex-basis: 100%;
+}
+
+.btn-subrutina:hover {
+    background-color: var(--turquesa-hover);
+    transform: translateY(-2px);
+}
+
+.aviso-especial {
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid #fecdd3;
+    color: #e11d48;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.88rem;
+    font-weight: 700;
+    backdrop-filter: blur(2px);
+    position: relative;
+    z-index: 2;
+    margin-top: auto; /* Ancla también el aviso al fondo en caso de no tener botón */
+}
+
+/* ==========================================================================
+   4. CONTENEDOR CALCULADORA IMC
+   ========================================================================== */
+.imc-container {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1px solid #cbd5e1;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.imc-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    color: #1e293b;
+}
+
+.imc-header i {
+    font-size: 1.5rem;
+    color: var(--turquesa-color);
+}
+
+.imc-header h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.imc-inputs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.input-group label span {
+    color: var(--turquesa-color);
+    font-weight: 800;
+}
+
+.input-group input[type="range"] {
+    width: 100%;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 5px;
+    outline: none;
+    accent-color: var(--turquesa-color);
+    cursor: pointer;
+}
+
+.btn-calcular {
+    width: 100%;
+    background-color: var(--imc-color);
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease, transform 0.1s ease;
+}
+
+.btn-calcular:hover {
+    background-color: #059669;
+}
+
+.btn-calcular:active {
+    transform: scale(0.99);
+}
+
+.imc-resultado {
+    margin-top: 20px;
+    background: #ffffff;
+    border: 2px solid var(--border-color);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    animation: fadeIn 0.4s ease forwards;
+    transition: border-color var(--transition-speed) ease;
+}
+
+.imc-resultado.hidden {
+    display: none;
+}
+
+.imc-resultado h3 {
+    color: #1e293b;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.imc-resultado p {
+    color: #64748b;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color var(--transition-speed) ease;
+}
+
+/* Animación simple */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   5. MEDIA QUERIES (ADAPTABILIDAD RESPONSIVA)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .main-container {
+        padding: 24px 20px;
+    }
+
+    .titulo-principal {
+        font-size: 1.8rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .botones-rutina {
+        flex-direction: column;
+    }
+
+    .btn-subrutina {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo-principal {
+        font-size: 1.5rem;
+    }
+
+    .card-rutina {
+        padding: 20px;
+    }
+
+    .imc-container {
+        padding: 20px 15px;
+    }
+}

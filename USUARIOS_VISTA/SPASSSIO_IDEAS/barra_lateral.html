@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra Lateral Base</title>
+    <!-- FontAwesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Enlace a tu nuevo archivo CSS -->
+    <link rel="stylesheet" href="css/barra_lateral.css">
+</head>
+<body>
+
+    <!-- Botón de prueba para abrir el menú (Gatillo) -->
+    <button id="btnMenu" style="margin: 20px; padding: 10px 20px; font-weight: bold; cursor: pointer;">
+        <i class="fas fa-bars"></i> Abrir Menú
+    </button>
+
+    <!-- Cortina de fondo (Overlay) requerida por el JS -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- ESTRUCTURA DE LA BARRA LATERAL (Sincronizada con tu JS externo) -->
+    <aside id="sidebarContainer" class="sidebar-container">
+        <!-- Botón de cierre nativo (El tachesito) -->
+        <button id="btn-cerrar" class="btn-cerrar">&times;</button>
+        
+        <!-- Contenedor interno donde irá todo tu diseño visual -->
+        <div class="sidebar-contenido">
+            <!-- ¡Aquí es donde metes tus menús, links y el diseño de la barra! -->
+            <p style="padding: 20px; font-family: sans-serif; color: #333;">Contenido de prueba de la barra</p>
+        </div>
+    </aside>
+
+    <!-- Contenido principal de la página de prueba -->
+    <main class="contenido-principal" style="padding: 20px;"></main>
+
+    <!-- CONEXIÓN AL ARCHIVO JS EXTERNO -->
+    <script src="js/barra_lateral.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPASSSIO | Rutinas y Calculadora IMC</title>
+    <link rel="stylesheet" href="css/rutinas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="main-container">
+        
+        <!-- Botón Regresar -->
+        <a href="inicio.html" class="btn-regresar">
+            <i class="fa-solid fa-right-to-bracket fa-rotate-180"></i>
+            Regresar
+        </a>
+
+        <!-- Título principal -->
+        <div class="header-content">
+            <h1 class="titulo-principal">Rutinas disponibles</h1>
+            <p class="subtitulo-info">Elige el entrenamiento que mejor se adapte a tus metas de hoy o calcula tu índice de masa corporal para guiarte mejor.</p>
+        </div>
+
+        <!-- Grid de Tarjetas con Iconos Semitransparentes -->
+        <div class="cards-grid">
+            
+            <!-- Tarjeta 1: Cardio -->
+            <div class="card-rutina card-cardio">
+                <i class="fa-solid fa-heart-pulse icon-bg"></i>
+                <div class="card-content">
+                    <h3 class="card-title">Cardio</h3>
+                    <p class="card-desc">Rutinas para mejorar tu resistencia y salud.</p>
+                </div>
+                <div class="botones-rutina">
+                    <a href="p_intermedio1.html" class="btn-subrutina">INTERMEDIO 1</a>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2: Tono Muscular -->
+            <div class="card-rutina card-tono">
+                <i class="fa-solid fa-dumbbell icon-bg"></i>
+                <div class="card-content">
+                    <h3 class="card-title">Tono muscular</h3>
+                    <p class="card-desc">Fortalece y tonifica tu masa muscular.</p>
+                </div>
+                <div class="botones-rutina">
+                    <a href="rutina_tono_1.html" class="btn-subrutina">TONO MUSCULAR 1</a>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3: Especial -->
+            <div class="card-rutina card-especial">
+                <i class="fa-solid fa-star icon-bg"></i>
+                <div class="card-content">
+                    <h3 class="card-title">Especial</h3>
+                    <p class="card-desc">Entrenamientos personalizados.</p>
+                </div>
+                <div class="aviso-especial">
+                    <span>Aún no tienes rutina asignada</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Contenedor Inferior: Calculadora de IMC -->
+        <div class="imc-container">
+            <div class="imc-header">
+                <i class="fa-solid fa-calculator"></i>
+                <h2>Calcula tu Índice de Masa Corporal (IMC)</h2>
+            </div>
+            
+            <div class="imc-inputs-grid">
+                <div class="input-group">
+                    <label for="peso">Peso (kg): <span id="peso-val">70</span> kg</label>
+                    <input type="range" id="peso" min="30" max="180" value="70" oninput="document.getElementById('peso-val').innerText = this.value">
+                </div>
+
+                <div class="input-group">
+                    <label for="altura">Altura (cm): <span id="altura-val">170</span> cm</label>
+                    <input type="range" id="altura" min="120" max="220" value="170" oninput="document.getElementById('altura-val').innerText = this.value">
+                </div>
+            </div>
+
+            <button class="btn-calcular" onclick="calcularIMC()">Calcular mi IMC</button>
+
+            <!-- Resultado del IMC -->
+            <div id="imc-resultado" class="imc-resultado hidden">
+                <h3 id="imc-valor-texto">Tu IMC es: --</h3>
+                <p id="imc-categoria-texto">Mueve las barras y presiona calcular.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script de cálculo de IMC -->
+    <script>
+        function calcularIMC() {
+            const peso = parseFloat(document.getElementById('peso').value);
+            const alturaCm = parseFloat(document.getElementById('altura').value);
+            const alturaM = alturaCm / 100;
+
+            const imc = (peso / (alturaM * alturaM)).toFixed(1);
+            
+            const resultadoDiv = document.getElementById('imc-resultado');
+            const valorTexto = document.getElementById('imc-valor-texto');
+            const categoriaTexto = document.getElementById('imc-categoria-texto');
+
+            let categoria = '';
+            let color = '';
+
+            // Clasificación detallada según criterios de la OMS
+            if (imc < 16.0) {
+                categoria = 'Bajo peso: Delgadez severa';
+                color = '#4338ca'; // Azul Oscuro / Índigo
+            } else if (imc >= 16.0 && imc < 17.0) {
+                categoria = 'Bajo peso: Delgadez moderada';
+                color = '#0284c7'; // Azul Medio
+            } else if (imc >= 17.0 && imc < 18.5) {
+                categoria = 'Bajo peso: Delgadez leve';
+                color = '#06b6d4'; // Cian / Azul Claro
+            } else if (imc >= 18.5 && imc < 25) {
+                categoria = 'Peso normal (Saludable)';
+                color = '#16a34a'; // Verde
+            } else if (imc >= 25 && imc < 30) {
+                categoria = 'Sobrepeso';
+                color = '#ca8a04'; // Amarillo / Dorado
+            } else if (imc >= 30 && imc < 35) {
+                categoria = 'Obesidad Clase I (Leve)';
+                color = '#ea580c'; // Naranja
+            } else if (imc >= 35 && imc < 40) {
+                categoria = 'Obesidad Clase II (Media)';
+                color = '#dc2626'; // Rojo
+            } else {
+                categoria = 'Obesidad Clase III (Mórbida)';
+                color = '#7c2d12'; // Rojo Oscuro / Marrón
+            }
+
+            // Asignar los valores a la interfaz
+            valorTexto.innerText = `Tu IMC es: ${imc}`;
+            categoriaTexto.innerText = `Categoría: ${categoria}`;
+            
+            // Aplicar el color dinámico al texto y al borde del recuadro
+            categoriaTexto.style.color = color;
+            resultadoDiv.style.borderColor = color;
+            
+            // Mostrar el recuadro
+            resultadoDiv.classList.remove('hidden');
+        }
+    </script>
+
+</body>
+</html>

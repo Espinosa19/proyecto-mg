@@ -1,0 +1,292 @@
+/* --- Variables y Reset --- */
+:root {
+    --primary-color: hsl(189, 98%, 38%);
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #475569;
+    --danger-color: #ff4757;
+    --success-color: #2ecc71;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 30px 20px;
+    overflow-y: auto;
+}
+
+/* --- Contenedor Principal (Centrado de Tarjetas) --- */
+.perfil-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Tarjeta Superior (Cabecera) --- */
+.tarjeta-cabecera {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.foto-wrapper {
+    position: relative;
+    margin-right: 20px;
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+}
+
+.foto-perfil {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    display: block;
+    background-color: #cbd5e1;
+}
+
+.btn-editar-foto {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+.btn-editar-foto:hover {
+    transform: scale(1.1);
+}
+
+.info-basica {
+    display: flex;
+    flex-direction: column;
+}
+
+.nombre-usuario {
+    color: var(--text-main);
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.rol-usuario {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* --- Tarjeta Inferior (Información) --- */
+.tarjeta-informacion {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.titulo-seccion {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 12px;
+}
+
+.lista-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dato-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #e2e8f0;
+}
+
+.dato-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.etiqueta {
+    font-weight: 700;
+    color: var(--text-main);
+    font-size: 1rem;
+}
+
+.valor {
+    color: var(--text-muted);
+    text-align: right;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* --- Botones de Acción --- */
+.acciones-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.btn-accion {
+    flex: 1;
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-accion:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+/* --- Tarjetas Desplegables con Animación --- */
+.tarjeta-accion {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    max-height: 500px;
+    opacity: 1;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tarjeta-accion.hidden {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+    margin-top: 0;
+    border: none;
+    pointer-events: none;
+}
+
+.tarjeta-accion h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.tarjeta-accion input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    outline: 2px solid transparent;
+    font-size: 1rem;
+    transition: outline 0.2s;
+}
+
+.tarjeta-accion input:focus {
+    outline-color: var(--primary-color);
+}
+
+/* --- Botones de Confirmar/Cancelar --- */
+.btn-confirmar {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: background 0.2s;
+}
+
+.btn-confirmar:hover {
+    background-color: #27ae60;
+}
+
+.btn-cancelar {
+    width: 100%;
+    padding: 12px;
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.btn-cancelar:hover {
+    background-color: #e2e8f0;
+}
+
+/* --- Botón Cerrar Sesión --- */
+.cerrar-sesion-container {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.btn-logout {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: var(--danger-color);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-logout:hover {
+    background-color: #ff6b81;
+    transform: translateY(-2px);
+    color: white;
+}

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>SPASSSIO | Calendario</title>
+
+<style>
+:root{
+  --glass:rgba(255,255,255,.38);
+  --dark:#111;
+}
+
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:
+    linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
+    linear-gradient(135deg,#f5f5f5,#cfcfcf);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+}
+
+/* ===== HEADER ===== */
+.header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  padding:15px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:50;
+}
+
+.header button{
+  padding:10px 18px;
+  border-radius:14px;
+  border:none;
+  background:#111;
+  color:white;
+  cursor:pointer;
+}
+
+/* ===== MAIN ===== */
+.main{
+  padding:120px 40px 80px;
+  max-width:1100px;
+  width:100%;
+  margin:auto;
+  display:grid;
+  gap:30px;
+  align-content:start;
+}
+
+/* ===== GLASS ===== */
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(22px) saturate(140%);
+  border-radius:28px;
+  padding:30px;
+  box-shadow:
+    0 25px 50px rgba(0,0,0,.25),
+    inset 0 0 0 1px rgba(255,255,255,.25);
+  animation:fade .5s ease;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ===== INPUTS ===== */
+input{
+  padding:12px;
+  border-radius:14px;
+  border:none;
+  width:100%;
+  margin-bottom:12px;
+}
+
+/* ===== BOTONES ===== */
+button{
+  padding:12px 22px;
+  border-radius:16px;
+  border:none;
+  background:#111;
+  color:white;
+  cursor:pointer;
+  font-weight:600;
+  transition:.3s;
+}
+
+button:hover{transform:scale(1.05)}
+button:active{transform:scale(.95)}
+
+.btn-danger{
+  background:#8b1e1e;
+}
+
+/* ===== EVENTOS ===== */
+.evento{
+  background:rgba(0,0,0,.22);
+  border-radius:16px;
+  padding:14px;
+  margin-top:12px;
+}
+
+.done{
+  opacity:.5;
+  text-decoration:line-through;
+}
+
+/* ===== CELEBRACIÓN ===== */
+.celebracion{
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,.45);
+  z-index:100;
+}
+
+.celebracion-card{
+  background:rgba(255,255,255,.45);
+  backdrop-filter:blur(22px);
+  border-radius:30px;
+  padding:40px;
+  text-align:center;
+}
+
+.sombrero{
+  font-size:60px;
+  animation:bounce .8s infinite alternate;
+}
+
+@keyframes bounce{
+  from{transform:translateY(0)}
+  to{transform:translateY(-12px)}
+}
+
+/* ===== CONFETI ===== */
+.confeti{
+  position:fixed;
+  width:10px;
+  height:10px;
+  top:-10px;
+  animation:fall 1.5s linear forwards;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <strong>📅 Calendario SPASSSIO</strong>
+  <button onclick="location.href='panel.html'">← Regresar</button>
+</div>
+
+<div class="main">
+
+  <div class="glass">
+    🔥 Racha actual: <strong><span id="racha">0</span></strong> días
+  </div>
+
+  <div class="glass">
+    <h2>🗓️ Programar entrenamiento</h2>
+    <input type="date" id="fecha">
+    <input type="time" id="inicio">
+    <input type="time" id="fin">
+    <button onclick="programar()">Guardar</button>
+  </div>
+
+  <div class="glass">
+    <h2>✅ Registrar entrenamiento</h2>
+    <div id="pendientes"></div>
+  </div>
+
+  <div class="glass">
+    <h2>📋 Registro de entrenamientos</h2>
+    <div id="historial"></div>
+    <br>
+    <button class="btn-danger" onclick="eliminarProgreso()">🗑 Eliminar mi progreso</button>
+  </div>
+
+  <div class="glass">
+    <h2>📊 Progreso</h2>
+    <canvas id="grafica" height="120"></canvas>
+  </div>
+
+</div>
+
+<div class="celebracion" id="celebracion">
+  <div class="celebracion-card">
+    <div class="sombrero">🎩</div>
+    <h2>¡Buen trabajo!</h2>
+    <p>Entrenamiento registrado 💪🔥</p>
+  </div>
+</div>
+
+<script>
+let racha = Number(localStorage.getItem("racha")) || 0;
+document.getElementById("racha").innerText = racha;
+
+function obtener(){
+  return JSON.parse(localStorage.getItem("entrenos")) || [];
+}
+
+function guardar(data){
+  localStorage.setItem("entrenos", JSON.stringify(data));
+}
+
+function programar(){
+  if(!fecha.value || !inicio.value || !fin.value) return;
+
+  let e = obtener();
+  e.push({fecha:fecha.value,inicio:inicio.value,fin:fin.value,hecho:false});
+  guardar(e);
+
+  fecha.value="";
+  inicio.value="";
+  fin.value="";
+
+  render();
+}
+
+function completar(i){
+  let e = obtener();
+  e[i].hecho = true;
+  guardar(e);
+
+  racha++;
+  localStorage.setItem("racha", racha);
+  document.getElementById("racha").innerText = racha;
+
+  celebrar();
+  render();
+}
+
+function eliminarProgreso(){
+  if(!confirm("¿Seguro que deseas eliminar todo tu progreso?")) return;
+
+  localStorage.removeItem("entrenos");
+  localStorage.removeItem("racha");
+
+  racha = 0;
+  document.getElementById("racha").innerText = 0;
+
+  render();
+}
+
+function render(){
+  let e = obtener();
+  pendientes.innerHTML = "";
+  historial.innerHTML = "";
+
+  let hechos = 0;
+
+  e.forEach((x,i)=>{
+    if(!x.hecho){
+      pendientes.innerHTML += `
+        <div class="evento">
+          📆 ${x.fecha} | ⏰ ${x.inicio}-${x.fin}<br><br>
+          <button onclick="completar(${i})">Registrar</button>
+        </div>`;
+    }else{
+      hechos++;
+      historial.innerHTML += `
+        <div class="evento done">
+          ✅ ${x.fecha} | ${x.inicio}-${x.fin}
+        </div>`;
+    }
+  });
+
+  dibujarGrafica(hechos, e.length - hechos);
+}
+
+function dibujarGrafica(hechos, pendientes){
+  const c = document.getElementById("grafica");
+  const ctx = c.getContext("2d");
+  ctx.clearRect(0,0,c.width,c.height);
+
+  const total = hechos + pendientes || 1;
+  const w = c.width - 40;
+
+  ctx.fillStyle = "#111";
+  ctx.fillRect(20,40,(hechos/total)*w,30);
+
+  ctx.fillStyle = "#777";
+  ctx.fillRect(20+(hechos/total)*w,40,(pendientes/total)*w,30);
+}
+
+function celebrar(){
+  celebracion.style.display="flex";
+
+  for(let i=0;i<30;i++){
+    let c=document.createElement("div");
+    c.className="confeti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),1500);
+  }
+
+  setTimeout(()=>celebracion.style.display="none",1500);
+}
+
+render();
+</script>
+
+
+
+</body>
+</html>

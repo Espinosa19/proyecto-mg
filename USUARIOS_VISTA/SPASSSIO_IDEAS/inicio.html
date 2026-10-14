@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPASSSIO</title>
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- CSS Base del Layout e Inicio -->
+    <link rel="stylesheet" href="css/inicio.css">
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR (TOPBAR) -->
+    <header class="topbar">
+        <div class="topbar-logo">
+            <img src="img/logo.png" alt="Logo Spasssio" class="logo-img">
+            <span class="brand-name">Spasssio</span>
+        </div>
+        
+        <!-- CONTENEDOR DE USUARIO Y CERRAR SESIÓN -->
+        <div class="topbar-right">
+            <!-- Información del perfil -->
+            <div class="topbar-user" title="Perfil de usuario">
+                <div class="user-info">
+                    <span class="user-greeting">Hola,</span>
+                    <span class="user-name">Usuario</span>
+                </div>
+                <div class="avatar-icon">
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+            </div>
+
+            <!-- Separador sutil -->
+            <div class="topbar-divider"></div>
+
+            <!-- Botón Cerrar Sesión (Puerta / Salida) -->
+            <a href="index.html" class="btn-logout" id="btn-logout" title="Cerrar sesión">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL (LAYOUT) -->
+    <div class="app-layout">
+
+        <!-- BARRA LATERAL (SIDEBAR) -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <!-- Botones con data-target para conectarse con navigation.js -->
+                <button class="sidebar-link active" data-target="seccion-inicio" title="Inicio">
+                    <i class="fa-solid fa-house"></i>
+                </button>
+                <button class="sidebar-link" data-target="seccion-progreso" title="Progreso">
+                    <i class="fa-solid fa-chart-column"></i>
+                </button>
+                <button class="sidebar-link" data-target="seccion-top" title="Ranking">
+                    <i class="fa-solid fa-crown"></i>
+                </button>
+                <button class="sidebar-link" data-target="seccion-configuracion" title="Configuración">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL CENTRADO -->
+        <main class="main-content">
+
+            <!-- SECCIÓN 1: INICIO (ACTIVA POR DEFECTO) -->
+            <section id="seccion-inicio" class="app-section active">
+                <div class="content-wrapper">
+                    
+                    <!-- MÓDULOS DE TARJETAS (2x2 ESTILO CANVA) -->
+                    <div class="grid-container">
+                        
+                        <!-- Tarjeta 1: Rutinas -->
+                        <div class="card">
+                            <img src="img/rutinas.jpeg" alt="Rutinas de Ejercicio" class="card-img">
+                            <a href="rutinas.html" class="btn-continuar tag-modulo">Rutinas</a>
+                        </div>
+
+                        <!-- Tarjeta 2: Recomendación Nutricional -->
+                        <div class="card">
+                            <img src="img/alimentacion.jpeg" alt="Recomendación Nutricional" class="card-img">
+                            <a href="recomendacion_nutricional.html" class="btn-continuar tag-modulo">Recomendación nutricional</a>
+                        </div>
+
+                        <!-- Tarjeta 3: Cuestionario de Salud -->
+                        <div class="card">
+                            <img src="img/cuestionario.jpeg" alt="Cuestionario de Salud" class="card-img">
+                            <a href="cuestionario.html" class="btn-continuar tag-modulo">Cuestionario de salud</a>
+                        </div>
+
+                        <!-- Tarjeta 4: Encuestas de Satisfacción -->
+                        <div class="card">
+                            <img src="img/tercero.png" alt="Encuestas de Opinión" class="card-img">
+                            <a href="encuestas.html" class="btn-continuar tag-modulo">Encuesta de satisfacción</a>
+                        </div>
+
+                    </div>
+
+                    <!-- NUESTROS BLOGS -->
+                    <div class="blogs-section">
+                        <h2 class="blogs-main-title">Nuestros Blogs</h2>
+
+                        <div class="blogs-list">
+                            
+                            <!-- Blog 1: Algo más -->
+                            <article class="blog-item">
+                                <div class="blog-img-box">
+                                    <img src="img/algo_.jpeg" alt="Algo más" class="blog-img">
+                                </div>
+                                <div class="blog-info">
+                                    <h3>Algo más</h3>
+                                    <p>¿Conoces a alguien que no suelta su teléfono celular? Mantente al tanto de los riesgos del uso excesivo del celular.</p>
+                                </div>
+                                <div class="blog-action">
+                                    <button class="btn-saber-mas" id="btn-algo-mas">Saber más</button>
+                                </div>
+                            </article>
+
+                            <!-- Blog 2: Entérate -->
+                            <article class="blog-item">
+                                <div class="blog-img-box">
+                                    <img src="img/enterarse.png" alt="Entérate" class="blog-img">
+                                </div>
+                                <div class="blog-info">
+                                    <h3>Entérate</h3>
+                                    <p>Conoce las noticias más relevantes que pueden influir en tu salud.</p>
+                                </div>
+                                <div class="blog-action">
+                                    <button class="btn-saber-mas" id="btn-enterate">Saber más</button>
+                                </div>
+                            </article>
+
+                            <!-- Blog 3: Motivación -->
+                            <article class="blog-item">
+                                <div class="blog-img-box">
+                                    <img src="img/motivacion_2.png" alt="Motivación" class="blog-img">
+                                </div>
+                                <div class="blog-info">
+                                    <h3>Motivación</h3>
+                                    <p>Conoce las noticias más relevantes que pueden influir en tu salud.</p>
+                                </div>
+                                <div class="blog-action">
+                                    <button class="btn-saber-mas" id="btn-motivacion">Saber más</button>
+                                </div>
+                            </article>
+
+                            <!-- Blog 4: Tips -->
+                            <article class="blog-item">
+                                <div class="blog-img-box">
+                                    <img src="img/tips_.jpeg" alt="Tips" class="blog-img">
+                                </div>
+                                <div class="blog-info">
+                                    <h3>Tips</h3>
+                                    <p>Conoce las noticias más relevantes que pueden influir en tu salud.</p>
+                                </div>
+                                <div class="blog-action">
+                                    <button class="btn-saber-mas" id="btn-tips">Saber más</button>
+                                </div>
+                            </article>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: PROGRESO -->
+            <section id="seccion-progreso" class="app-section">
+                <iframe src="progreso.html" class="app-iframe" title="Progreso"></iframe>
+            </section>
+
+            <!-- SECCIÓN 3: RANKING (TOP) -->
+            <section id="seccion-top" class="app-section">
+                <iframe src="top.html" class="app-iframe" title="Ranking"></iframe>
+            </section>
+
+            <!-- SECCIÓN 4: CONFIGURACIÓN -->
+            <section id="seccion-configuracion" class="app-section">
+                <iframe src="configuracion.html" class="app-iframe" title="Configuración"></iframe>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- VENTANA MODAL EMERGENTE BLOGS -->
+    <div id="blog-modal" class="modal-overlay">
+        <div class="modal-container">
+            <!-- Botón de tres puntos convertido en desplegable interactivo -->
+            <div class="dropdown-blogs-container">
+                <button class="btn-tres-puntos-blog" id="btn-menu-tres-puntos" title="Opciones de blogs">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+                
+                <!-- Menú desplegable con los IDs exactos para enlazarse -->
+                <div class="dropdown-menu-blogs" id="dropdown-menu-blogs">
+                    <button class="dropdown-item" id="menu-algo-mas">Algo más</button>
+                    <button class="dropdown-item" id="menu-enterate">Entérate</button>
+                    <button class="dropdown-item" id="menu-motivacion">Motivación</button>
+                    <button class="dropdown-item" id="menu-tips">Tips</button>
+                </div>
+            </div>
+
+            <div id="modal-content"></div>
+            <div class="modal-footer">
+                <button class="btn-continuar" id="btn-modal-close">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PERFIL INCOMPLETO -->
+    <div id="modal-perfil" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fa-solid fa-info"></i>
+            </div>
+            <h3>¡Tu perfil esta incompleto!</h3>
+            <p>Por favor, completa tu perfil <a href="#" id="link-ir-ajustes" class="link-perfil">aquí</a>.</p>
+            <button id="btn-aceptar-modal" class="btn-modal-aceptar">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- SCRIPTS EXTERNOS -->
+    <script src="js/navigation.js"></script>
+    <script src="js/algo_mas.js"></script>
+    <script src="js/motivacion.js"></script>
+    <script src="js/enterate.js"></script>
+    <script src="js/tips.js"></script>
+    <script src="js/modal.js"></script>
+
+    <!-- SCRIPT DE CONTROL DEL MODAL DE PERFIL -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const modalPerfil = document.getElementById('modal-perfil');
+            const btnAceptar = document.getElementById('btn-aceptar-modal');
+            const linkAjustes = document.getElementById('link-ir-ajustes');
+
+            // 1. Mostrar el modal automáticamente al cargar
+            if (modalPerfil) {
+                modalPerfil.classList.add('active');
+            }
+
+            // 2. Cerrar el modal al hacer clic en Aceptar
+            if (btnAceptar && modalPerfil) {
+                btnAceptar.addEventListener('click', () => {
+                    modalPerfil.classList.remove('active');
+                });
+            }
+
+            // 3. Redirigir a la pestaña de Configuración al hacer clic en "aquí"
+            if (linkAjustes && modalPerfil) {
+                linkAjustes.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modalPerfil.classList.remove('active');
+
+                    // Simula el clic en el botón del engrane de la barra lateral
+                    const btnConfiguracion = document.querySelector('.sidebar-link[data-target="seccion-configuracion"]');
+                    if (btnConfiguracion) {
+                        btnConfiguracion.click();
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <!-- SCRIPT DEFINITIVO: MENÚ DESPLEGABLE Y CONEXIÓN CON LOS BOTONES ORIGINALES -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnTresPuntos = document.getElementById('btn-menu-tres-puntos');
+            const menuBlogs = document.getElementById('dropdown-menu-blogs');
+
+            // 1. Abrir o cerrar el menú desplegable al hacer clic en los tres puntos
+            if (btnTresPuntos && menuBlogs) {
+                btnTresPuntos.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    menuBlogs.classList.toggle('active');
+                });
+
+                // Cerrar el menú si se hace clic fuera de él
+                document.addEventListener('click', () => {
+                    if (menuBlogs.classList.contains('active')) {
+                        menuBlogs.classList.remove('active');
+                    }
+                });
+            }
+
+            // 2. Vincular cada opción del menú desplegable con el botón de "Saber más" correspondiente
+            const menuAlgoMas = document.getElementById('menu-algo-mas');
+            const menuEnterate = document.getElementById('menu-enterate');
+            const menuMotivacion = document.getElementById('menu-motivacion');
+            const menuTips = document.getElementById('menu-tips');
+
+            const btnOriginalAlgoMas = document.getElementById('btn-algo-mas');
+            const btnOriginalEnterate = document.getElementById('btn-enterate');
+            const btnOriginalMotivacion = document.getElementById('btn-motivacion');
+            const btnOriginalTips = document.getElementById('btn-tips');
+
+            if (menuAlgoMas && btnOriginalAlgoMas) {
+                menuAlgoMas.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    menuBlogs.classList.remove('active');
+                    btnOriginalAlgoMas.click(); // Carga exactamente el contenido completo del blog
+                });
+            }
+
+            if (menuEnterate && btnOriginalEnterate) {
+                menuEnterate.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    menuBlogs.classList.remove('active');
+                    btnOriginalEnterate.click();
+                });
+            }
+
+            if (menuMotivacion && btnOriginalMotivacion) {
+                menuMotivacion.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    menuBlogs.classList.remove('active');
+                    btnOriginalMotivacion.click();
+                });
+            }
+
+            if (menuTips && btnOriginalTips) {
+                menuTips.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    menuBlogs.classList.remove('active');
+                    btnOriginalTips.click();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Progreso - Dashboard</title>
+    <!-- Iconos para las flechas de navegación y elementos gráficos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/grafica.css">
+</head>
+<body>
+
+    <main class="dashboard-wrapper">
+        
+        <!-- SECCIÓN SUPERIOR: 2 COLUMNAS (PERFIL Y CALIFICACIONES) -->
+        <section class="top-row">
+            
+            <!-- CONTENEDOR 1: PERFIL DEL USUARIO -->
+            <article class="card card-perfil">
+                <div class="perfil-avatar-wrapper">
+                    <div class="perfil-avatar-container">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Avatar de Usuario" class="perfil-avatar">
+                        <span class="status-dot" title="En línea"></span>
+                    </div>
+                </div>
+                
+                <div class="perfil-info">
+                    <h2 class="usuario-nombre">Usuario</h2>
+                    <ul class="lista-detalles">
+                        <li><i class="fa-regular fa-envelope"></i> <strong>Correo:</strong> usuario@correo.com</li>
+                        <li><i class="fa-solid fa-user-graduate"></i> <strong>Grupo:</strong> Avanzado</li>
+                        <li><i class="fa-regular fa-calendar-days"></i> <strong>Inicio de plan:</strong> 01/07/2026</li>
+                        <li><i class="fa-regular fa-calendar-check"></i> <strong>Fin de plan:</strong> 01/08/2026</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- CONTENEDOR 2: INFORMACIÓN DE CALIFICACIONES -->
+            <article class="card card-calificaciones">
+                <h3 class="pregunta-titulo">¿Qué significan las calificaciones?</h3>
+                <p class="subtitulo-intensidad">Son la intensidad del ejercicio realizado</p>
+                
+                <div class="botones-puntos-grid">
+                    <button class="btn-punto btn-0">0 Puntos</button>
+                    <button class="btn-punto btn-1">1 Punto</button>
+                    <button class="btn-punto btn-2">2 Puntos</button>
+                    <button class="btn-punto btn-3">3 Puntos</button>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- SECCIÓN INTERMEDIA: SISTEMA DE CORONAS -->
+        <section class="middle-row">
+            
+            <!-- CONTENEDOR 3: ¿CÓMO FUNCIONAN LAS CORONAS? -->
+            <article class="card card-explicacion-coronas">
+                <h2 class="coronas-titulo">¿Cómo funcionan las coronas?</h2>
+                <p class="coronas-subtitulo">Se otorgan mensualmente según los puntos acumulados:</p>
+                
+                <ul class="lista-coronas-puntos">
+                    <li><span class="dot-bullet"></span> De 0 a 14 puntos = 1 corona</li>
+                    <li><span class="dot-bullet"></span> De 15 a 26 puntos = 2 coronas</li>
+                    <li><span class="dot-bullet"></span> De 27 a 38 puntos = 3 coronas</li>
+                    <li><span class="dot-bullet"></span> De 39+ puntos = 4 coronas</li>
+                </ul>
+            </article>
+
+            <!-- CONTENEDOR 4: CONTADOR Y NAVEGADOR DE CORONAS -->
+            <article class="card card-contador-coronas">
+                
+                <!-- Navegador del título "Coronas" con flechas -->
+                <div class="coronas-navigator">
+                    <button class="btn-coronas-arrow" id="btn-coronas-prev" aria-label="Anterior">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <h2 class="coronas-header-title">Coronas</h2>
+
+                    <button class="btn-coronas-arrow" id="btn-coronas-next" aria-label="Siguiente">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Resumen de puntos y coronas del usuario -->
+                <div class="coronas-stats-wrapper">
+                    <p class="stat-puntos-obtenidos">Puntos obtenidos: <span id="puntos-val">0</span></p>
+                    <p class="stat-tus-coronas">Tus coronas: <span id="coronas-val"></span></p>
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- SECCIÓN INFERIOR: CONTENEDOR CON PESTAÑAS (GRÁFICA / NOTAS) -->
+        <section class="bottom-row">
+            <article class="card card-grafica">
+                
+                <!-- CABECERA CON PESTAÑAS -->
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="switchTab('grafica', this)">
+                        Gráfica de progreso
+                    </button>
+                    <button class="tab-btn" onclick="switchTab('notas', this)">
+                        Notas
+                    </button>
+                </div>
+
+                <!-- CONTENIDO DE LAS PESTAÑAS -->
+                <div class="tabs-wrapper">
+                    
+                    <!-- VISTA 1: GRÁFICA Y PERIODOS -->
+                    <div id="tab-grafica" class="tab-content active">
+                        <div class="periods-container">
+                            <h2 class="periodos-title">Periodos</h2>
+
+                            <!-- Pestañas de selección (Estilo Píldora Modernizado) -->
+                            <div class="periodos-buttons">
+                                <button class="btn-periodo active" data-periodo="semanal" onclick="actualizarVistaGrafica('semanal')">Semanal</button>
+                                <button class="btn-periodo" data-periodo="resumen-mensual" onclick="actualizarVistaGrafica('resumen-mensual')">Resumen Mensual</button>
+                                <button class="btn-periodo" data-periodo="mensual" onclick="actualizarVistaGrafica('mensual')">Mensual</button>
+                                <button class="btn-periodo" data-periodo="anual" onclick="actualizarVistaGrafica('anual')">Anual</button>
+                            </div>
+
+                            <!-- Navegador de Rango de Fechas Estilizado -->
+                            <div class="periodo-navigator">
+                                <button class="btn-nav-arrow" onclick="cambiarRangoPeriodo('anterior')" title="Anterior">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <div class="periodo-info">
+                                    <span id="label-periodo" class="label-periodo">Semana 2</span>
+                                    <span id="rango-fechas" class="rango-fechas">22/07/2026 - 28/07/2026</span>
+                                </div>
+
+                                <button class="btn-nav-arrow" onclick="cambiarRangoPeriodo('siguiente')" title="Siguiente">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <!-- Área de Estado / Renderizado de Gráfica -->
+                            <div id="grafica-estado" class="grafica-render-area">
+                                <p class="empty-data-msg">No hay datos para esta vista.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VISTA 2: SECCIÓN DE NOTAS -->
+                    <div id="tab-notas" class="tab-content">
+                        <div class="notas-container">
+                            <textarea id="nota-texto" class="input-nota" placeholder="Escribe tus notas de entrenamiento aquí..."></textarea>
+                            <button class="btn-guardar-nota" onclick="guardarNota()">Guardar nota</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </article>
+        </section>
+
+    </main>
+
+    <!-- ARCHIVOS JAVASCRIPT INDEPENDIENTES -->
+    <script src="js/tabs.js"></script>
+    <script src="js/grafica.js"></script>
+    <script src="js/notas.js"></script>
+
+</body>
+</html>

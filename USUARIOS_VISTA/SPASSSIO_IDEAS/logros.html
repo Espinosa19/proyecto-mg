@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>SPASSSIO | Logros</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+:root{
+  --glass:rgba(255,255,255,.25);
+  --dark:#111;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#f2f2f2,#bdbdbd);
+}
+
+/* ---------- MODALES ---------- */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:200;
+}
+.modal-card{
+  background:rgba(255,255,255,.35);
+  backdrop-filter:blur(20px);
+  border-radius:26px;
+  padding:40px;
+  text-align:center;
+  box-shadow:0 30px 60px rgba(0,0,0,.25);
+  max-width:440px;
+}
+.modal-card button{
+  margin-top:15px;
+  padding:12px 22px;
+  border-radius:14px;
+  border:none;
+  background:#111;
+  color:white;
+  cursor:pointer;
+}
+
+/* ---------- CONTENIDO ---------- */
+.main{
+  padding:90px 60px;
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:25px;
+}
+
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(20px);
+  border-radius:26px;
+  padding:30px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+input{
+  width:100%;
+  padding:12px;
+  border-radius:14px;
+  border:none;
+  margin-bottom:12px;
+}
+
+input[type=range]{padding:0}
+
+button{
+  padding:10px 16px;
+  border:none;
+  border-radius:14px;
+  background:#111;
+  color:white;
+  cursor:pointer;
+}
+
+.registro{
+  background:rgba(0,0,0,.15);
+  border-radius:14px;
+  padding:12px;
+  margin-top:10px;
+  font-size:14px;
+}
+
+/* ---------- HÁBITOS ---------- */
+.habito{
+  display:grid;
+  grid-template-columns:1fr auto auto;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+.habito span{font-size:15px}
+.habito button{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  font-size:18px;
+  padding:0;
+  opacity:.4; /* 🔥 opacos por defecto */
+  transition:.3s;
+}
+.ok{background:#111}
+.no{background:#555}
+.habito button:hover{
+  transform:scale(1.2);
+  opacity:.7;
+}
+
+/* 🔥 botón seleccionado */
+.habito button.activo{
+  opacity:1;
+  transform:scale(1.2);
+  box-shadow:0 0 15px rgba(0,0,0,.4);
+}
+
+/* ---------- BOTÓN ---------- */
+.back-btn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  padding:10px 18px;
+  border-radius:14px;
+  background:#111;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+
+@media(max-width:900px){
+  .main{
+    grid-template-columns:1fr;
+    padding:90px 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MODAL -->
+<div class="modal" id="modalLogro" style="display:none">
+  <div class="modal-card">
+    <h2>🏆 Progreso destacado</h2>
+    <p id="mensajeLogro"></p>
+    <button onclick="cerrarModal()">Continuar</button>
+  </div>
+</div>
+
+<button class="back-btn" onclick="window.location.href='panel.html'">← Regresar</button>
+
+<div class="main">
+
+<!-- IZQUIERDA -->
+<div>
+  <div class="glass">
+    <h2>📅 Registro mensual</h2>
+    <input type="number" id="peso" placeholder="Peso (kg)">
+    <input type="number" id="estatura" placeholder="Estatura (cm)">
+    <button onclick="guardarRegistro()">Guardar mes</button>
+  </div>
+
+  <br>
+
+  <div class="glass">
+    <h2>📈 Evolución</h2>
+    <canvas id="grafica"></canvas>
+  </div>
+
+  <br>
+
+  <div class="glass">
+    <h2>🗂 Historial corporal</h2>
+    <div id="historial"></div>
+  </div>
+</div>
+
+<!-- DERECHA -->
+<div>
+
+  <div class="glass">
+    <h2>🔥 Progreso en Retos</h2>
+    <p>🏁 Nivel actual: <strong id="nivelTxt"></strong></p>
+    <p>🔥 Racha activa: <strong id="rachaTxt"></strong> días</p>
+    <p style="font-size:14px;opacity:.8">
+      Tu constancia en los retos impacta directamente en tus resultados.
+    </p>
+  </div>
+
+  <br>
+
+  <!-- IMC CALCULADORA -->
+  <div class="glass">
+    <h2>🧮 Calculadora IMC</h2>
+
+    <label>Peso (kg): <strong id="pesoVal">70</strong></label>
+    <input type="range" min="40" max="150" value="70" id="pesoR">
+
+    <label>Altura (cm): <strong id="alturaVal">170</strong></label>
+    <input type="range" min="140" max="210" value="170" id="alturaR">
+
+    <button onclick="calcularIMC()">Calcular IMC</button>
+
+    <div id="imcInfo" style="margin-top:12px;font-size:14px">
+      Aún no calculado
+    </div>
+  </div>
+
+  <br>
+
+  <!-- CHEQUEO -->
+  <div class="glass">
+    <h2>🔥 Chequeo semanal de hábitos</h2>
+
+    <div class="habito">
+      <span>💤 Sueño</span>
+      <button class="ok" onclick="setHabito(0,true)">✔️</button>
+      <button class="no" onclick="setHabito(0,false)">❌</button>
+    </div>
+
+    <div class="habito">
+      <span>💧 Hidratación</span>
+      <button class="ok" onclick="setHabito(1,true)">✔️</button>
+      <button class="no" onclick="setHabito(1,false)">❌</button>
+    </div>
+
+    <div class="habito">
+      <span>🏃 Entrenamiento</span>
+      <button class="ok" onclick="setHabito(2,true)">✔️</button>
+      <button class="no" onclick="setHabito(2,false)">❌</button>
+    </div>
+
+    <div class="habito">
+      <span>🍎 Alimentación</span>
+      <button class="ok" onclick="setHabito(3,true)">✔️</button>
+      <button class="no" onclick="setHabito(3,false)">❌</button>
+    </div>
+
+    <button onclick="guardarHabitos()">Guardar semana</button>
+
+    <br><br>
+    <canvas id="graficaDisciplina" height="120"></canvas>
+  </div>
+
+</div>
+</div>
+
+<script>
+let registros = JSON.parse(localStorage.getItem("registros")) || [];
+let disciplina = JSON.parse(localStorage.getItem("disciplina")) || [];
+let habitosTemp = [null,null,null,null];
+
+let nivelActual = Number(localStorage.getItem("nivelActual")) || 1;
+let racha = Number(localStorage.getItem("racha")) || 0;
+
+nivelTxt.innerText = nivelActual;
+rachaTxt.innerText = racha;
+
+const ctx = document.getElementById("grafica").getContext("2d");
+let chart, discChart;
+
+/* ---------- IMC ---------- */
+pesoR.oninput=()=>pesoVal.innerText=pesoR.value;
+alturaR.oninput=()=>alturaVal.innerText=alturaR.value;
+
+function calcularIMC(){
+  let p=pesoR.value;
+  let a=alturaR.value/100;
+  let imc=(p/(a*a)).toFixed(1);
+  let c=imc<18.5?"Bajo peso":imc<25?"Normal":imc<30?"Sobrepeso":"Obesidad";
+  imcInfo.innerHTML=`<strong>${imc}</strong> (${c})`;
+}
+
+/* ---------- REGISTROS ---------- */
+function guardarRegistro(){
+  if(!peso.value||!estatura.value) return;
+
+  registros.push({
+    peso:Number(peso.value),
+    fecha:new Date().toLocaleDateString()
+  });
+
+  localStorage.setItem("registros",JSON.stringify(registros));
+  peso.value=""; estatura.value="";
+  mostrar();
+}
+
+function mostrar(){
+  historial.innerHTML="";
+  registros.forEach(r=>{
+    historial.innerHTML+=`
+      <div class="registro">
+        📅 ${r.fecha}<br>
+        ⚖ ${r.peso} kg
+      </div>
+    `;
+  });
+  actualizarGrafica();
+}
+
+function actualizarGrafica(){
+  if(chart) chart.destroy();
+  chart=new Chart(ctx,{
+    type:'line',
+    data:{
+      labels:registros.map(r=>r.fecha),
+      datasets:[{
+        data:registros.map(r=>r.peso),
+        borderColor:'#111',
+        backgroundColor:'rgba(0,0,0,.2)',
+        tension:.3,
+        fill:true
+      }]
+    },
+    options:{plugins:{legend:{display:false}}}
+  });
+}
+
+/* ---------- HÁBITOS → DISCIPLINA ---------- */
+function setHabito(i,val){
+  habitosTemp[i]=val;
+
+  let fila = document.querySelectorAll(".habito")[i];
+  let botones = fila.querySelectorAll("button");
+
+  botones.forEach(b=>b.classList.remove("activo"));
+
+  if(val === true){
+    botones[0].classList.add("activo");
+  }else{
+    botones[1].classList.add("activo");
+  }
+}
+
+function guardarHabitos(){
+  let puntos=habitosTemp.filter(h=>h===true).length*25;
+  disciplina.push(puntos);
+  localStorage.setItem("disciplina",JSON.stringify(disciplina));
+  habitosTemp=[null,null,null,null];
+  actualizarDisciplina();
+}
+
+function actualizarDisciplina(){
+  let ctx=document.getElementById("graficaDisciplina").getContext("2d");
+  if(discChart) discChart.destroy();
+
+  discChart=new Chart(ctx,{
+    type:'line',
+    data:{
+      labels:disciplina.map((_,i)=>`Semana ${i+1}`),
+      datasets:[{
+        data:disciplina,
+        borderColor:'#111',
+        backgroundColor:'rgba(0,0,0,.2)',
+        tension:.4,
+        fill:true
+      }]
+    },
+    options:{
+      scales:{y:{min:0,max:100}},
+      plugins:{legend:{display:false}}
+    }
+  });
+}
+
+function cerrarModal(){modalLogro.style.display="none";}
+
+mostrar();
+actualizarDisciplina();
+</script>
+
+</body>
+</html>

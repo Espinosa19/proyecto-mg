@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SPASSSIO | Ajustes</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/ajustes.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+<div class="topbar">
+<div class="logo">
+    <img src="img/logo.png" alt="Logo">
+  </div>
+</div>
+
+<div class="sidebar">
+
+<a href="panel.html">
+<div class="menu-item">
+<i class="fas fa-house"></i>
+<span>HOME</span>
+</div>
+</a>
+
+<a href="progreso.html">
+<div class="menu-item">
+<i class="fas fa-chart-line"></i>
+<span>MI PROGRESO</span>
+</div>
+</a>
+
+<a href="top.html">
+<div class="menu-item">
+<i class="fas fa-trophy"></i>
+<span>TOP GANADORES</span>
+</div>
+</a>
+
+<a href="ajustes.html">
+<div class="menu-item">
+<i class="fas fa-gear"></i>
+<span>AJUSTES</span>
+</div>
+</a>
+
+<a href="panel.html#blogs">
+<div class="menu-item">
+<i class="fas fa-blog"></i>
+<span>BLOGS</span>
+</div>
+</a>
+
+</div>
+
+<div class="main">
+
+<h2 style="text-align:center;margin-bottom:30px;">Ajustes de Usuario</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<img id="preview" class="profile-img"
+src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
+
+<p id="nombreCompleto"></p>
+<p id="correoMostrado"></p>
+
+</div>
+
+<div class="card">
+
+<h3 style="color:#2f80ff">Información Personal</h3>
+
+<input id="nombre" class="input" placeholder="Nombre">
+<input id="apellido" class="input" placeholder="Apellidos">
+<input id="correo" class="input" placeholder="Correo">
+<input id="telefono" class="input" placeholder="Número">
+
+<br><br>
+
+<div style="margin-top:15px;">
+
+<input type="file" id="foto">
+
+<br><br>
+
+<button class="btn-danger" onclick="eliminarFoto()">
+Eliminar foto
+</button>
+
+</div>
+
+<br>
+
+<button class="btn" onclick="guardarDatos()">
+Actualizar Datos
+</button>
+
+</div>
+
+<div class="card">
+
+<h3 style="color:#2f80ff">Cambiar Contraseña</h3>
+
+<input type="password" class="input" placeholder="Contraseña actual">
+<input type="password" class="input" placeholder="Nueva contraseña">
+<input type="password" class="input" placeholder="Confirmar contraseña">
+
+<button class="btn">
+Guardar Nueva Contraseña
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="js/ajustes.js"></script>
+
+<!-- ===== CHATBOT SPASSSIO ===== -->
+<div id="chatbot">
+
+    <div id="chat-btn" onclick="toggleChat()">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png">
+    </div>
+
+    <div id="chat-box">
+
+        <div class="chat-header">
+            <span>Spasssio Chat</span>
+            <button onclick="toggleChat()">✖</button>
+        </div>
+
+        <div id="chat-content"></div>
+
+        <div id="chat-options"></div>
+
+        <div id="typing">🤖 Escribiendo...</div>
+
+        <input type="text" id="chat-input" placeholder="Escribe..." onkeypress="enviar(event)">
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="css/chatbot.css">
+<script src="js/chatbot.js"></script>
+</body>
+</html>
